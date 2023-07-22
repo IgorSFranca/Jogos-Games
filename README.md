@@ -1,10 +1,10 @@
 # Jogos-Games
  
-Aqui serão disponibilizados os jogos reproduzidos nas linguagens em aprendizagem. 
+Aqui serão disponibilizados os jogos reproduzidos nas linguagens em aprendizagem. <br>
 Fique a vontade para contribuir com a correção de algum código, sugerindo algum jogo ou de outra forma que achar pertinente. 
 
-Planejamento de criação:
-        obs.: A criação não será necessáriamente nesta ordem (Rsrs)
+Planejamento de criação: <br>
+obs.: A criação não será necessáriamente nesta ordem (Rsrs)
 
 01. Jogo da Forca
 02. Campo Minado
