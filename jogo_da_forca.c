@@ -30,7 +30,7 @@ int main (){
     memset (letras_certas, '_', sizeof(palavra_misteriosa)-1); //Inicialização do vetor letras_certas com vários "_"
 
     //Declarações de variáveis
-    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 1, posicao = 0, tentativas = 0;
+    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 0, posicao = 0, tentativas = 0;
 
     //Início do código
     do{//Laço de repetição para executar até o fim do jogo
@@ -59,12 +59,17 @@ int main (){
         }
         posicao++; //Posicionamento da letra na exibição das tentativas
         tentativas++; //Contagem de tentativas
-        if (vitoria == sizeof(palavra_misteriosa)){// Condição de verificação do fim do jogo
-            printf("Parabens voce acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
+        if (vitoria == sizeof(palavra_misteriosa)-1) //Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
             break;
-        } 
-    } while (tentativas != sizeof(palavra_misteriosa)-1);
-    printf("FIM DE JOGO\n"); // Mensagem de encerramento do jogo
+    } while (tentativas != sizeof(palavra_misteriosa)-1); //O loop se encerra quando encerram as tentativas
+    if (vitoria == sizeof(palavra_misteriosa)-1){// Condição de verificação do fim do jogo
+        printf("Parabens voce acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
+        printf("Fim de jogo!\n");
+    } 
+    else{
+        printf("Voce nao conseguiu acertar a palavra.\n");//Mensagem por ter perdido o jogo
+        printf("Fim de jogo!\n");
+    }
     system ("pause");
     return 0;
 }
