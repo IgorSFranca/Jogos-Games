@@ -26,11 +26,11 @@ void cabecalho(){
 
 int main (){
     //Declarações de vetores
-    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)], letras_erradas[sizeof(palavra_misteriosa)];
-    memset (letras_certas, '_', sizeof(palavra_misteriosa)); //Inicialização do vetor letras_certas com vários "_"
+    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1], letras_erradas[sizeof(palavra_misteriosa)-1];
+    memset (letras_certas, '_', sizeof(palavra_misteriosa)-1); //Inicialização do vetor letras_certas com vários "_"
 
     //Declarações de variáveis
-    int i, max = sizeof(palavra_misteriosa), tentativas = sizeof(palavra_misteriosa), vitoria = 1, controle = sizeof(palavra_misteriosa);
+    int i, max = sizeof(palavra_misteriosa)-1, tentativas = sizeof(palavra_misteriosa)-1, vitoria = 1, controle;
 
     //Início do código
     do{//Laço de repetição para executar até o fim do jogo
@@ -38,12 +38,15 @@ int main (){
         printf("Informe uma letra: "); //Solicitando a letra para o usuário
         scanf(" %c", &letra[0]); //Entrada da letra pelo jogador
         for (i=0; i<max; i++){ //Laço para verificar se a letra informada pelo jogador está na palavra
+            controle = 0; //Inicialização da variável de controle de erros
             if (letra[0] == palavra_misteriosa[i]){ //Condição para achar a letra na palavra
                 letras_certas[i] = letra[0]; //Caso encontre a letra na palavra, a letra certa é arquivada em outro Vetor, na mesma posicao encontrada
                 vitoria++; //Contador de acertos para verificar o fim do jogo
             }
+            else
+                controle++; //Soma de unidade para as posições que não contem a letra advinhada
         }
-        if (controle  ){
+        if (controle == sizeof(palavra_misteriosa)){ // Verificação para caso não haja nenhuma letra igual a tentativa do usuário
                 tentativas--; //Contador de erros para verificar o fim do jogo
                 letras_erradas[i] = letra[0]; //Arquivamento das letras erradas que foram tentadas
                 if (tentativas > 0) //condição para acertar o plural da palavra CHANCES
