@@ -30,7 +30,7 @@ int main (){
     memset (letras_certas, '_', sizeof(palavra_misteriosa)-1); //Inicialização do vetor letras_certas com vários "_"
 
     //Declarações de variáveis
-    int i, max = sizeof(palavra_misteriosa)-1, tentativas = sizeof(palavra_misteriosa)-1, vitoria = 1, controle;
+    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 1, controle, tentativas = 0;
 
     //Início do código
     do{//Laço de repetição para executar até o fim do jogo
@@ -43,31 +43,15 @@ int main (){
                 letras_certas[i] = letra[0]; //Caso encontre a letra na palavra, a letra certa é arquivada em outro Vetor, na mesma posicao encontrada
                 vitoria++; //Contador de acertos para verificar o fim do jogo
             }
-            else
-                controle++; //Soma de unidade para as posições que não contem a letra advinhada
         }
-        if (controle == sizeof(palavra_misteriosa)){ // Verificação para caso não haja nenhuma letra igual a tentativa do usuário
-                tentativas--; //Contador de erros para verificar o fim do jogo
-                letras_erradas[i] = letra[0]; //Arquivamento das letras erradas que foram tentadas
-                if (tentativas > 0) //condição para acertar o plural da palavra CHANCES
-                    printf("Voce possui mais %i chances.\n", tentativas); //Mensagem da quantidade de chances que ainda restam
-                else
-                    printf("Voce possui somente mais %i chance.\n", tentativas); //Mensagem da quantidade de chances que ainda restam
-            }
-
         printf("Palavra: "); 
         for (i=0; i<max; i++){// Laço para imprimir as letras acertadas pelo usuário
             printf("%c", letras_certas[i]);
         }
         printf("\n");
-        printf("Letras erradas: "); 
-        for (i=0; i<max; i++){// Laço para imprimir as letras erradas pelo usuário
-            printf("%c", letras_erradas[i]);
-        }
-        printf("\n");
         if (vitoria == sizeof(palavra_misteriosa)) // Condição de verificação do fim do jogo
             printf("Parabéns você acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
-    } while (tentativas != 0);
+    } while (chances != 0);
     printf("GAME-OVER\n"); // Mensagem de perda do jogo
     system ("pause");
     return 0;
