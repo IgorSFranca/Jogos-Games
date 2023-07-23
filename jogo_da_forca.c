@@ -9,6 +9,7 @@
 #include <stdio.h> //Biblioteca padrão
 #include <stdlib.h> //Biblioteca padrão
 #include <string.h> //Biblioteca para manipulação de strings
+#include <ctype.h> //Colocas as letras todas em minúsculas
 
 void cabecalho(){
     printf("-----------------------------\n");
@@ -48,6 +49,7 @@ int main (){
         printf("Voce tem %i tentativas.\n", sizeof(palavra_misteriosa)-1-tentativas);//Mostrar a quantidade de tentativas que o usuario possui
         printf("Informe uma letra: "); //Solicitando a letra para o usuário
         scanf(" %c", &letra[0]); //Entrada da letra pelo jogador
+        letra[0] = tolower(letra[0]);
         system ("cls"); //Limpar a tela depois de tentar adivinhar a letra
         for (i=0; i<max; i++){ //Laço para verificar se a letra informada pelo jogador está na palavra
             if (letra[0] == palavra_misteriosa[i]){ //Condição para achar a letra na palavra
