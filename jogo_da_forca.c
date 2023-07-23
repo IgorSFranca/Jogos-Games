@@ -25,17 +25,28 @@ void cabecalho(){
 }
 
 int main (){
-    char palavra_misteriosa[] = {"camiseta"}, letra[1];
-    int i, max = sizeof(palavra_misteriosa);
-    do{
+    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)] = {"_ "};
+    int i, max = sizeof(palavra_misteriosa), tentativas = sizeof(palavra_misteriosa), vitoria;
+    do{//Laço de repetição para executar até o fim do jogo
         cabecalho();
-        printf("Diga uma letra: ");
-        scanf(" %c", &letra[0]);
-        for (i=0; i<max; i++){
-
-
+        printf("Informe uma letra: "); 
+        scanf(" %c", &letra[0]); //Entrada da letra pelo jogador
+        for (i=0; i<max; i++){ //Laço para verificar se a letra informada pelo jogador está na palavra
+            if (palavra_misteriosa[i] == letra[0]){ //Condição para achar a letra na palavra
+                letras_certas[i] = letra[0]; //Caso encontre a letra na palavra, a letra certa é arquivada em outro Vetor, na mesma posicao encontrada
+                vitoria++; //Contador de acertos para verificar o fim do jogo
+            }
+            else
+                tentativas--; //Contador de erros para verificar o fim do jogo
         }
-    }
+        for (i=0; i<max; i++){// Laço para imprimir as letras acertadas pelo usuário
+            printf("%c", letras_certas[i]);
+        }
+        printf("\n");
+        if (vitoria == sizeof(palavra_misteriosa)) // Condição de verificação do fim do jogo
+            printf("Parabéns você acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
+    } while (tentativas != 0);
+    printf("GAME-OVER\n"); // Mensagem de perda do jogo
     system ("pause");
     return 0;
 }
