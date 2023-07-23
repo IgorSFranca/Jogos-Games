@@ -26,11 +26,11 @@ void cabecalho(){
 
 int main (){
     //Declarações de vetores
-    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1];
+    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1], letras_tentadas[sizeof(palavra_misteriosa)-1] = {""};
     memset (letras_certas, '_', sizeof(palavra_misteriosa)-1); //Inicialização do vetor letras_certas com vários "_"
 
     //Declarações de variáveis
-    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 1;
+    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 1, posicao = 0, tentativas = 0;
 
     //Início do código
     do{//Laço de repetição para executar até o fim do jogo
@@ -38,6 +38,11 @@ int main (){
         printf("Palavra: "); 
         for (i=0; i<max; i++){// Laço para imprimir as letras acertadas pelo usuário
             printf("%c", letras_certas[i]);
+        }
+        printf("\n");
+        printf("Tentativas: ");
+        for (i=0; i<tentativas; i++){// Laço para imprimir as letras tentadas pelo usuário
+            printf("%c", letras_tentadas[i]);
         }
         printf("\n");
         printf("Informe uma letra: "); //Solicitando a letra para o usuário
@@ -49,7 +54,11 @@ int main (){
                 vitoria++; //Contador de acertos para verificar o fim do jogo
             }
         }
-
+        for (i=posicao; i<max; i++){ // Arquivamento das tentativas
+            letras_tentadas[i] = letra[0];
+        }
+        posicao++; //Posicionamento da letra na exibição das tentativas
+        tentativas++; //Contagem de tentativas
         if (vitoria == sizeof(palavra_misteriosa)){// Condição de verificação do fim do jogo
             printf("Parabens voce acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
             break;
