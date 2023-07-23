@@ -26,29 +26,30 @@ void cabecalho(){
 
 int main (){
     //Declarações de vetores
-    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1], letras_erradas[sizeof(palavra_misteriosa)-1];
+    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1];
     memset (letras_certas, '_', sizeof(palavra_misteriosa)-1); //Inicialização do vetor letras_certas com vários "_"
 
     //Declarações de variáveis
-    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 1, controle, tentativas = 0;
+    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 1;
 
     //Início do código
     do{//Laço de repetição para executar até o fim do jogo
         cabecalho();
-        printf("Informe uma letra: "); //Solicitando a letra para o usuário
-        scanf(" %c", &letra[0]); //Entrada da letra pelo jogador
-        for (i=0; i<max; i++){ //Laço para verificar se a letra informada pelo jogador está na palavra
-            controle = 0; //Inicialização da variável de controle de erros
-            if (letra[0] == palavra_misteriosa[i]){ //Condição para achar a letra na palavra
-                letras_certas[i] = letra[0]; //Caso encontre a letra na palavra, a letra certa é arquivada em outro Vetor, na mesma posicao encontrada
-                vitoria++; //Contador de acertos para verificar o fim do jogo
-            }
-        }
         printf("Palavra: "); 
         for (i=0; i<max; i++){// Laço para imprimir as letras acertadas pelo usuário
             printf("%c", letras_certas[i]);
         }
         printf("\n");
+        printf("Informe uma letra: "); //Solicitando a letra para o usuário
+        scanf(" %c", &letra[0]); //Entrada da letra pelo jogador
+        system ("cls"); //Limpar a tela depois de tentar adivinhar a letra
+        for (i=0; i<max; i++){ //Laço para verificar se a letra informada pelo jogador está na palavra
+            if (letra[0] == palavra_misteriosa[i]){ //Condição para achar a letra na palavra
+                letras_certas[i] = letra[0]; //Caso encontre a letra na palavra, a letra certa é arquivada em outro Vetor, na mesma posicao encontrada
+                vitoria++; //Contador de acertos para verificar o fim do jogo
+            }
+        }
+
         if (vitoria == sizeof(palavra_misteriosa)){// Condição de verificação do fim do jogo
             printf("Parabens voce acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
             break;
