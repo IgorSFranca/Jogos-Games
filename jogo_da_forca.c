@@ -49,10 +49,12 @@ int main (){
             printf("%c", letras_certas[i]);
         }
         printf("\n");
-        if (vitoria == sizeof(palavra_misteriosa)) // Condição de verificação do fim do jogo
-            printf("Parabéns você acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
+        if (vitoria == sizeof(palavra_misteriosa)){// Condição de verificação do fim do jogo
+            printf("Parabens voce acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
+            break;
+        } 
     } while (chances != 0);
-    printf("GAME-OVER\n"); // Mensagem de perda do jogo
+    printf("FIM DE JOGO\n"); // Mensagem de encerramento do jogo
     system ("pause");
     return 0;
 }
