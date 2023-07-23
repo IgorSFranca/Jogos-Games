@@ -45,6 +45,7 @@ int main (){
             printf("%c", letras_tentadas[i]);
         }
         printf("\n");
+        printf("Voce tem %i tentativas.\n", sizeof(palavra_misteriosa)-1-tentativas);//Mostrar a quantidade de tentativas que o usuario possui
         printf("Informe uma letra: "); //Solicitando a letra para o usuário
         scanf(" %c", &letra[0]); //Entrada da letra pelo jogador
         system ("cls"); //Limpar a tela depois de tentar adivinhar a letra
