@@ -63,7 +63,7 @@ int main (){
             printf("Parabens voce acertou a palavra!\n"); //Mensagem de parabenização por ter vencido o jogo
             break;
         } 
-    } while (chances != 0);
+    } while (tentativas != sizeof(palavra_misteriosa)-1);
     printf("FIM DE JOGO\n"); // Mensagem de encerramento do jogo
     system ("pause");
     return 0;
