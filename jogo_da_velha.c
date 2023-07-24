@@ -19,8 +19,22 @@ void cabecalho(){
 }
 
 int main (){
-    cabecalho();
+    int i, j, linha=3, coluna=3;
+    char jogo[linha][coluna];
 
+    cabecalho();
+    for (i=0; i<linha; i++){//Inicializar o jogo
+        for (j=0; j<coluna; j++){
+            jogo[i][j] = '*';
+        }
+    }
+    for (i=0; i<linha; i++){//Mostrar o jogo inicial vazio
+        printf("\n");
+        for (j=0; j<coluna; j++){
+            printf("%c ", jogo[i][j]);
+        }
+    }
+    printf("\n\n");
     system ("pause");
     return 0;
 }
