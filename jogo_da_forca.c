@@ -12,9 +12,11 @@
 #include <ctype.h> //Colocas as letras todas em minúsculas
 
 void cabecalho(){
-    printf("-----------------------------\n");
-    printf("        JOGO DA FORCA\n");
-    printf("-----------------------------\n");
+    printf("++++++++++++++++++++++++++++\n");
+    printf("+          ~~*~~           +\n");
+    printf("+   ~# JOGO DA FORCA #~    +\n");
+    printf("+          ~~*~~           +\n");
+    printf("++++++++++++++++++++++++++++\n\n");
     printf("  ==================\n");
     printf("  ||//             |\n");
     printf("  ||/              O\n");
