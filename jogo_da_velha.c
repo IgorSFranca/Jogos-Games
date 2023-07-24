@@ -9,8 +9,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main (){
+void cabecalho(){
+    printf("++++++++++++++++++++++++++++\n");
+    printf("+          ~~*~~           +\n");
+    printf("+   ~# JOGO DA VELHA #~    +\n");
+    printf("+          ~~*~~           +\n");
+    printf("++++++++++++++++++++++++++++\n\n");
+    
+}
 
+int main (){
+    cabecalho();
 
     system ("pause");
     return 0;
