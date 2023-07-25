@@ -6,12 +6,15 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //biblioteca para gerar um número aleatório
+#include <time.h> //biblioteca complementar para gerar o número aleatório
+#include <unistd.h> //biblioteca para usar o Sleep
+#include <ctype.h> //biblioteca para jogar a resposta para minúsculo
 
 void cabecalho(){
     printf("++++++++++++++++++++++++++++\n");
     printf("+          ~~*~~           +\n");
-    printf("+   ~# JO - KEN - PO #~    +\n");
+    printf("+   ~#   JO-KEN-PO   #~    +\n");
     printf("+          ~~*~~           +\n");
     printf("++++++++++++++++++++++++++++\n");
     printf("+     FACA SUA ESCOLHA     +\n");
@@ -22,8 +25,26 @@ void cabecalho(){
 }
 
 int main (){
-  cabecalho();
-  
+  int jogada_pc = rand() % 3 + 1, jogada_usuario;
+  char resp = 's';
+  srand(time(NULL)); //determina a semente do número aleatório. A cada execução ele gera um número diferente
+  do {
+    system ("cls");
+    cabecalho();
+    printf("Faca a sua jogada: ");
+    scanf("%i", &jogada_usuario);
+    switch (jogada_usuario){
+      case 1: //Pedra
+      case 2: //Papel
+      case 3: //Tesoura
+      default: 
+        printf("Jogada nao encontrada.\n");
+        break;
+    } 
+    printf("Deseja jogar novamente [s/n]? ");
+    scanf(" %c", &resp);
+    resp = tolower(resp);
+  } while (resp == 's');
   system("pause");
   return 0;
 }
