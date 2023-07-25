@@ -24,6 +24,15 @@ void cabecalho(){
     printf("++++++++++++++++++++++++++++\n\n");
 }
 
+void animacao_resultado(){
+    sleep(1);
+    printf("~ JO\n");
+    sleep(1);
+    printf("~~ KEN\n");
+    sleep(1);
+    printf("~~~ PO\n");
+}
+
 int main (){
   int jogada_pc = rand() % 3 + 1, jogada_usuario;
   char resp = 's';
@@ -33,6 +42,7 @@ int main (){
     cabecalho();
     printf("Faca a sua jogada: ");
     scanf("%i", &jogada_usuario);
+    animacao_resultado();
     switch (jogada_usuario){
       case 1: //Pedra
       case 2: //Papel
@@ -45,6 +55,5 @@ int main (){
     scanf(" %c", &resp);
     resp = tolower(resp);
   } while (resp == 's');
-  system("pause");
   return 0;
 }
