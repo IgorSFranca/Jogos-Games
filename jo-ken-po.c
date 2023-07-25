@@ -8,8 +8,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main (){
+void cabecalho(){
+    printf("++++++++++++++++++++++++++++\n");
+    printf("+          ~~*~~           +\n");
+    printf("+   ~# JO - KEN - PO #~    +\n");
+    printf("+          ~~*~~           +\n");
+    printf("++++++++++++++++++++++++++++\n");
+    printf("+     FACA SUA ESCOLHA     +\n");
+    printf("[1] PEDRA                  +\n");
+    printf("[2] PAPEL                  +\n");
+    printf("[3] TESOURA                +\n");
+    printf("++++++++++++++++++++++++++++\n\n");
+}
 
+int main (){
+  cabecalho();
+  
   system("pause");
   return 0;
 }
