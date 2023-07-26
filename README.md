@@ -7,18 +7,19 @@ Planejamento de criação: <br>
 obs.: A criação não será necessáriamente nesta ordem (Rsrs)
 
 01. [x] Jogo da Forca 
-02. [ ] Campo Minado
-03. [ ] Jogo da memória
-04. [ ] Jo-Ken-Pô
-05. [ ] Batalha Naval
-06. [ ] Truco
-07. [ ] Banco Imobiliário
-08. [ ] Dama
-09. [ ] Xadrez
-10. [ ] Jogo da velha
-11. [ ] Sudoku
-12. [ ] 2048
-13. [ ] Quebra-Cabeças deslizante
-14. [ ] Jogo da cobrinha
-15. [ ] Jogo de Pong
-16. [ ] Pac-Man
+02. [x] Jo-Ken-Pô
+03. [x] Par ou Ímpar
+04. [ ] Campo Minado
+05. [ ] Jogo da memória
+06. [ ] Batalha Naval
+07. [ ] Truco
+08. [ ] Banco Imobiliário
+09. [ ] Dama
+10. [ ] Xadrez
+11. [ ] Jogo da velha
+12. [ ] Sudoku
+13. [ ] 2048
+14. [ ] Quebra-Cabeças deslizante
+15. [ ] Jogo da cobrinha
+16. [ ] Jogo de Pong
+17. [ ] Pac-Man
