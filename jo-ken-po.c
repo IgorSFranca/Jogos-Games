@@ -41,11 +41,13 @@ int main (){
     system ("cls");
     srand((unsigned)time(NULL)); //determina a semente do número aleatório. A cada execução ele gera um número diferente
     jogada_pc = rand()%3+1;
+
     cabecalho();
     printf("Faca a sua jogada: ");
     scanf("%i", &jogada_usuario);
+
     animacao_resultado();
-    printf("Computador: %i\n", jogada_pc);
+
     switch (jogada_usuario){
       case 1: //Pedra
         if (jogada_pc == 1){
@@ -65,7 +67,39 @@ int main (){
         }
         break;
       case 2: //Papel
+        if (jogada_pc == 1){
+          printf("Escolha do Computador: Pedra.\n");
+          printf("Voce GANHOU! PARABENS!\n");
+          printf("\n");
+        }
+        else if (jogada_pc == 2){
+          printf("Escolha do Computador: Papel.\n");
+          printf("Houve um EMPATE!\n");
+          printf("\n");
+        }
+        else{
+          printf("Escolha do Computador: Tesoura.\n");
+          printf("Voce PERDEU!\n");
+          printf("\n");
+        }
+        break;
       case 3: //Tesoura
+        if (jogada_pc == 1){
+          printf("Escolha do Computador: Pedra.\n");
+          printf("Voce PERDEU!\n");
+          printf("\n");
+        }
+        else if (jogada_pc == 2){
+          printf("Escolha do Computador: Papel.\n");
+          printf("Voce GANHOU! PARABENS!\n");
+          printf("\n");
+        }
+        else{
+          printf("Escolha do Computador: Tesoura.\n");
+          printf("Houve um EMPATE!\n");
+          printf("\n");
+        }
+        break;
       default: 
         printf("Jogada nao encontrada.\n");
         break;
