@@ -73,6 +73,8 @@ int main (){
             printf("Opcao nao encontrada.\n");
             break;
     }
+    printf("\nDeseja jogar novamente [s/n]: ");
+    scanf(" %c", &resp);
     } while (resp == 's');
 
     return 0;
