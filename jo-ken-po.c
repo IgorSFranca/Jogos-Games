@@ -38,18 +38,20 @@ int main (){
   char resp = 's';
 
   do {
-    system ("cls");
+    system ("cls"); //Limpeza da tela a cada nova jogada
     srand((unsigned)time(NULL)); //determina a semente do número aleatório. A cada execução ele gera um número diferente
-    jogada_pc = rand()%3+1;
+    jogada_pc = rand()%3+1; //gerando o número aleatório pelo computador
 
+    //solicitação da jogada do usuário
     cabecalho();
     printf("Faca a sua jogada: ");
     scanf("%i", &jogada_usuario);
 
     animacao_resultado();
 
+    //Busca para correspondência da jogada
     switch (jogada_usuario){
-      case 1: //Pedra
+      case 1: //Escolha do usuário: Pedra
         if (jogada_pc == 1){
           printf("Escolha do Computador: Pedra.\n");
           printf("Houve um EMPATE!\n");
@@ -66,7 +68,7 @@ int main (){
           printf("\n");
         }
         break;
-      case 2: //Papel
+      case 2: //Escolha do usuário: Papel
         if (jogada_pc == 1){
           printf("Escolha do Computador: Pedra.\n");
           printf("Voce GANHOU! PARABENS!\n");
@@ -83,7 +85,7 @@ int main (){
           printf("\n");
         }
         break;
-      case 3: //Tesoura
+      case 3: //Escolha do usuário: Tesoura
         if (jogada_pc == 1){
           printf("Escolha do Computador: Pedra.\n");
           printf("Voce PERDEU!\n");
@@ -104,6 +106,8 @@ int main (){
         printf("Jogada nao encontrada.\n");
         break;
     } 
+
+    //Continuar o jogo
     printf("Deseja jogar novamente [s/n]? ");
     scanf(" %c", &resp);
     resp = tolower(resp);
