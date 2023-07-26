@@ -47,8 +47,32 @@ int main (){
     scanf("%i", &escolha_usuario);
 
     animacao_resultado();
-    
 
+    switch (escolha_usuario){
+        case 1://Usuario escolheu IMPAR
+            if (escolha_pc == escolha_usuario){
+                printf("O computador mostrou 1 e voce mostrou 1.\n");
+                printf("VOCE PERDEU!\n");
+            }
+            else{
+                printf("O computador mostrou 2 e voce mostrou 1.\n");
+                printf("VOCE GANHOU!\n");
+            }
+            break;
+        case 2://Usuario escolheu PAR
+            if (escolha_pc == escolha_usuario){
+                printf("O computador mostrou 2 e voce mostrou 2.\n");
+                printf("VOCE GANHOU!\n");
+            }
+            else{
+                printf("O computador mostrou 1 e voce mostrou 2.\n");
+                printf("VOCE PERDEU!\n");
+            }
+            break;
+        default:
+            printf("Opcao nao encontrada.\n");
+            break;
+    }
     } while (resp == 's');
 
     return 0;
