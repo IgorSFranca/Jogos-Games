@@ -8,8 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h> //Biblioteca para gerar um número aleatório
 #include <time.h> //Biblioteca complementar para gerar o número aleatório
-#include <unistd.h> //Biblioteca para uso do sleep
 #include <ctype.h> //Biblioteca para transformar as letras em minúsculas
+#include <windows.h> //Biblioteca para uso do sleep
 
 void cabecalho(){
     printf(" ++++++++++++++++++++++++++++\n");
@@ -23,14 +23,14 @@ void cabecalho(){
     printf(" ++++++++++++++++++++++++++++\n\n");
 }
 
-/*void animacao_resultado(){
-    sleep(1);
+void animacao_resultado(){
+    Sleep(600);
     printf("~ PAR\n");
-    sleep(1);
+    Sleep(600);
     printf("~~ ou\n");
-    sleep(1);
+    Sleep(600);
     printf("~~~ IMPAR\n");
-}*/
+}
 
 int main (){
     int escolha_pc, escolha_usuario;
@@ -46,7 +46,7 @@ int main (){
     printf("Faca a sua jogada: ");
     scanf("%i", &escolha_usuario);
 
- //   animacao_resultado();
+    animacao_resultado();
 
     switch (escolha_usuario){
         case 1://Usuario escolheu IMPAR
@@ -75,6 +75,7 @@ int main (){
     }
     printf("\nDeseja jogar novamente [s/n]: ");
     scanf(" %c", &resp);
+    resp = tolower(resp);
     } while (resp == 's');
 
     return 0;
