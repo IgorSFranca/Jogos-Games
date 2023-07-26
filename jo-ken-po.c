@@ -12,16 +12,16 @@
 #include <ctype.h> //biblioteca para jogar a resposta para minúsculo
 
 void cabecalho(){
-    printf("++++++++++++++++++++++++++++\n");
-    printf("+          ~~*~~           +\n");
-    printf("+   ~#   JO-KEN-PO   #~    +\n");
-    printf("+          ~~*~~           +\n");
-    printf("++++++++++++++++++++++++++++\n");
-    printf("+     FACA SUA ESCOLHA     +\n");
-    printf("[1] PEDRA                  +\n");
-    printf("[2] PAPEL                  +\n");
-    printf("[3] TESOURA                +\n");
-    printf("++++++++++++++++++++++++++++\n\n");
+    printf(" ++++++++++++++++++++++++++++\n");
+    printf(" +          ~~*~~           +\n");
+    printf(" +   ~#   JO-KEN-PO   #~    +\n");
+    printf(" +          ~~*~~           +\n");
+    printf(" ++++++++++++++++++++++++++++\n");
+    printf(" +     FACA SUA ESCOLHA     +\n");
+    printf(" + [1] PEDRA                +\n");
+    printf(" + [2] PAPEL                +\n");
+    printf(" + [3] TESOURA              +\n");
+    printf(" ++++++++++++++++++++++++++++\n\n");
 }
 
 void animacao_resultado(){
