@@ -23,14 +23,14 @@ void cabecalho(){
     printf(" ++++++++++++++++++++++++++++\n\n");
 }
 
-void animacao_resultado(){
+/*void animacao_resultado(){
     sleep(1);
     printf("~ PAR\n");
     sleep(1);
     printf("~~ ou\n");
     sleep(1);
     printf("~~~ IMPAR\n");
-}
+}*/
 
 int main (){
     int escolha_pc, escolha_usuario;
@@ -46,7 +46,7 @@ int main (){
     printf("Faca a sua jogada: ");
     scanf("%i", &escolha_usuario);
 
-    animacao_resultado();
+ //   animacao_resultado();
 
     switch (escolha_usuario){
         case 1://Usuario escolheu IMPAR
