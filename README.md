@@ -8,7 +8,7 @@ obs.: A criação não será necessáriamente nesta ordem (Rsrs)
 
 01. [x] Jogo da Forca 
 02. [x] Jo-Ken-Pô
-03. [x] Par ou Ímpar
+03. [ ] Par ou Ímpar
 04. [ ] Campo Minado
 05. [ ] Jogo da memória
 06. [ ] Batalha Naval
