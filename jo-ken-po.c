@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h> //biblioteca para gerar um número aleatório
 #include <time.h> //biblioteca complementar para gerar o número aleatório
-#include <unistd.h> //biblioteca para usar o Sleep
+#include <windows.h> //biblioteca para usar o Sleep
 #include <ctype.h> //biblioteca para jogar a resposta para minúsculo
 
 void cabecalho(){
@@ -25,11 +25,11 @@ void cabecalho(){
 }
 
 void animacao_resultado(){
-    sleep(1);
+    Sleep(600);
     printf("~ JO\n");
-    sleep(1);
+    Sleep(600);
     printf("~~ KEN\n");
-    sleep(1);
+    Sleep(600);
     printf("~~~ PO\n");
 }
 
