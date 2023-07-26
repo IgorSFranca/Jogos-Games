@@ -34,17 +34,36 @@ void animacao_resultado(){
 }
 
 int main (){
-  int jogada_pc = rand() % 3 + 1, jogada_usuario;
+  int jogada_pc, jogada_usuario;
   char resp = 's';
-  srand(time(NULL)); //determina a semente do número aleatório. A cada execução ele gera um número diferente
+
   do {
     system ("cls");
+    srand((unsigned)time(NULL)); //determina a semente do número aleatório. A cada execução ele gera um número diferente
+    jogada_pc = rand()%3+1;
     cabecalho();
     printf("Faca a sua jogada: ");
     scanf("%i", &jogada_usuario);
     animacao_resultado();
+    printf("Computador: %i\n", jogada_pc);
     switch (jogada_usuario){
       case 1: //Pedra
+        if (jogada_pc == 1){
+          printf("Escolha do Computador: Pedra.\n");
+          printf("Houve um EMPATE!\n");
+          printf("\n");
+        }
+        else if (jogada_pc == 2){
+          printf("Escolha do Computador: Papel.\n");
+          printf("Voce PERDEU!\n");
+          printf("\n");
+        }
+        else{
+          printf("Escolha do Computador: Tesoura.\n");
+          printf("Voce GANHOU! PARABENS!\n");
+          printf("\n");
+        }
+        break;
       case 2: //Papel
       case 3: //Tesoura
       default: 
