@@ -1,12 +1,13 @@
 /*
- * Nome do arquivo: meu_programa.c
- * Descrição: Programa para realizar uma determinada tarefa.
- * Autor: Seu Nome
- * Data de criação: 22 de julho de 2023
+ * Nome do arquivo: jogo_da_memoria.c
+ * Descrição: Jogo da memória
+ * Autor: Igor França
+ * Data de criação: 27 de julho de 2023
  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 void cabecalho(){
     printf(" +++++++++++++++++++++++++++++\n");
@@ -17,8 +18,6 @@ void cabecalho(){
 }
 
 int main (){
-    cabecalho();
-
-
+        cabecalho();
     return 0;
 }
