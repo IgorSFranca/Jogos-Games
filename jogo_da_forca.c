@@ -11,21 +11,7 @@
 #include <string.h> //Biblioteca para manipulação de strings
 #include <ctype.h> //Colocas as letras todas em minúsculas
 
-void cabecalho(){
-    printf("++++++++++++++++++++++++++++\n");
-    printf("+          ~~*~~           +\n");
-    printf("+   ~# JOGO DA FORCA #~    +\n");
-    printf("+          ~~*~~           +\n");
-    printf("++++++++++++++++++++++++++++\n\n");
-    printf("  ==================\n");
-    printf("  ||//             |\n");
-    printf("  ||/              O\n");
-    printf("  ||              /|\\ \n");
-    printf("  ||              / \\ \n");
-    printf("  ||\n");
-    printf("  -------------------\n");
-
-}
+void cabecalho(), imprimir_certas(char letras_certas[], int max), imprimir_tentativas(char);
 
 int main (){
     char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1], letras_tentadas[sizeof(palavra_misteriosa)-1] = {""};
@@ -35,11 +21,7 @@ int main (){
 
     do{
         cabecalho();
-        printf("Palavra: "); 
-        for (i=0; i<max; i++){
-            printf("%c", letras_certas[i]);
-        }
-        printf("\n");
+        imprimir_certas(letras_certas, max);
         printf("Tentativas: ");
         for (i=0; i<tentativas; i++){
             printf("%c", letras_tentadas[i]);
@@ -74,4 +56,28 @@ int main (){
     }
     system ("pause");
     return 0;
+}
+
+void cabecalho(){
+    printf("++++++++++++++++++++++++++++\n");
+    printf("+          ~~*~~           +\n");
+    printf("+   ~# JOGO DA FORCA #~    +\n");
+    printf("+          ~~*~~           +\n");
+    printf("++++++++++++++++++++++++++++\n\n");
+    printf("  ==================\n");
+    printf("  ||//             |\n");
+    printf("  ||/              O\n");
+    printf("  ||              /|\\ \n");
+    printf("  ||              / \\ \n");
+    printf("  ||\n");
+    printf("  -------------------\n");
+}
+
+void imprimir_certas(char letras_certas[], int max){
+    int i;
+    printf("Palavra: "); 
+    for (i=0; i<max; i++){
+        printf("%c", letras_certas[i]);
+    }
+    printf("\n");
 }
