@@ -12,6 +12,7 @@
 #include <ctype.h> //Colocas as letras todas em minúsculas
 
 void cabecalho(), imprimir_certas(char letras_certas[], int max), imprimir_tentativas(char letras_tentadas[], int tentativas);
+char capta_letra(int max, int tentativas, char letra[]);
 
 int main (){
     char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1], letras_tentadas[sizeof(palavra_misteriosa)-1] = {""};
@@ -23,10 +24,7 @@ int main (){
         cabecalho();
         imprimir_certas(letras_certas, max);
         imprimir_tentativas(letras_tentadas, tentativas);
-        printf("Voce tem %i tentativas.\n", sizeof(palavra_misteriosa)-1-tentativas);
-        printf("Informe uma letra: ");
-        scanf(" %c", &letra[0]); 
-        letra[0] = tolower(letra[0]);
+        letra[0] = capta_letra(max, tentativas, letra);
         system ("cls"); 
         for (i=0; i<max; i++){ //Laço para verificar se a letra informada pelo jogador está na palavra
             if (letra[0] == palavra_misteriosa[i]){ 
@@ -85,4 +83,11 @@ void imprimir_tentativas(char letras_tentadas[], int tentativas){
         printf("%c", letras_tentadas[i]);
     }
     printf("\n");
+}
+
+char capta_letra(int max, int tentativas, char letra[]){
+    printf("Voce tem %i tentativas.\n", max-tentativas);
+    printf("Informe uma letra: ");
+    scanf(" %c", &letra[0]); 
+    return (tolower(letra[0]));
 }
