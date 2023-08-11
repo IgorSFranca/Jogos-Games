@@ -3,7 +3,9 @@
  * Descrição: Jogo info-juvenil da foca, onde o usuário tenta adivinhar a palavra escondida. A cada tentativa errada, o usuário 
  * perde um ponto de vida.
  * Autor: Igor França
- * Data de criação: 22 de julho de 2023
+ * Datas:
+ *      Criação: 22 de julho de 2023; 
+ *      Modularização: 11/08/2023
  */
 
 #include <stdio.h> 
@@ -11,17 +13,29 @@
 #include <string.h> //Biblioteca para manipulação de strings
 #include <ctype.h> //Colocas as letras todas em minúsculas
 
-void cabecalho(), imprimir_certas(char letras_certas[], int max), imprimir_tentativas(char letras_tentadas[], int tentativas);
+//protótipos
+void cabecalho();
+void imprimir_certas(char letras_certas[], int max);
+void imprimir_tentativas(char letras_tentadas[], int tentativas);
 void verifica_fim(int vitoria, int max);
 char capta_letra(int max, int tentativas, char letra[]);
 int verifica_letra(int max, char palavra_misteriosa[], char letras_certas[], char letra[], int vitoria, int posicao, char letras_tentadas[]);
 
 int main (){
-    char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1], letras_tentadas[sizeof(palavra_misteriosa)-1] = {""};
+    //declaração de variáveis
+    char palavra_misteriosa[] = {"quadrilongo"};
+    char letra[1];
+    char letras_certas[sizeof(palavra_misteriosa)-1];
+    char letras_tentadas[sizeof(palavra_misteriosa)-1] = {""};
     memset (letras_certas, '_', sizeof(palavra_misteriosa)-1); 
+    int i;
+    int max = sizeof(palavra_misteriosa)-1;
+    int chances = sizeof(palavra_misteriosa)-1;
+    int vitoria = 0;
+    int posicao = 0;
+    int tentativas = 0;
 
-    int i, max = sizeof(palavra_misteriosa)-1, chances = sizeof(palavra_misteriosa)-1, vitoria = 0, posicao = 0, tentativas = 0;
-
+    //execução do jogo
     do{
         cabecalho();
         imprimir_certas(letras_certas, max);
@@ -39,6 +53,7 @@ int main (){
     return 0;
 }
 
+//procedimentos e funções
 void cabecalho(){
     printf("++++++++++++++++++++++++++++\n");
     printf("+          ~~*~~           +\n");
