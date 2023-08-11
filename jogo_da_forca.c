@@ -11,7 +11,7 @@
 #include <string.h> //Biblioteca para manipulação de strings
 #include <ctype.h> //Colocas as letras todas em minúsculas
 
-void cabecalho(), imprimir_certas(char letras_certas[], int max), imprimir_tentativas(char);
+void cabecalho(), imprimir_certas(char letras_certas[], int max), imprimir_tentativas(char letras_tentadas[], int tentativas);
 
 int main (){
     char palavra_misteriosa[] = {"camiseta"}, letra[1], letras_certas[sizeof(palavra_misteriosa)-1], letras_tentadas[sizeof(palavra_misteriosa)-1] = {""};
@@ -22,11 +22,7 @@ int main (){
     do{
         cabecalho();
         imprimir_certas(letras_certas, max);
-        printf("Tentativas: ");
-        for (i=0; i<tentativas; i++){
-            printf("%c", letras_tentadas[i]);
-        }
-        printf("\n");
+        imprimir_tentativas(letras_tentadas, tentativas);
         printf("Voce tem %i tentativas.\n", sizeof(palavra_misteriosa)-1-tentativas);
         printf("Informe uma letra: ");
         scanf(" %c", &letra[0]); 
@@ -78,6 +74,15 @@ void imprimir_certas(char letras_certas[], int max){
     printf("Palavra: "); 
     for (i=0; i<max; i++){
         printf("%c", letras_certas[i]);
+    }
+    printf("\n");
+}
+
+void imprimir_tentativas(char letras_tentadas[], int tentativas){
+    int i;
+    printf("Tentativas: ");
+    for (i=0; i<tentativas; i++){
+        printf("%c", letras_tentadas[i]);
     }
     printf("\n");
 }
