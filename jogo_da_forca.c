@@ -14,7 +14,7 @@
 #include <ctype.h> //Colocas as letras todas em minúsculas
 
 //protótipos
-void cabecalho();
+void cabecalho(int);
 void imprimir_certas(char letras_certas[], int);
 void imprimir_tentativas(char letras_tentadas[], int);
 void verifica_fim(int, int);
@@ -35,7 +35,7 @@ int main (){
 
     //execução do jogo
     do{
-        cabecalho();
+        cabecalho(chances);
         imprimir_certas(letras_certas, max);
         imprimir_tentativas(letras_tentadas, posicao);
         letra[0] = capta_letra(chances, letra);
@@ -51,12 +51,13 @@ int main (){
 }
 
 //procedimentos e funções
-void cabecalho(){
+void cabecalho(int chances){
     printf("++++++++++++++++++++++++++++\n");
     printf("+          ~~*~~           +\n");
     printf("+   ~# JOGO DA FORCA #~    +\n");
     printf("+          ~~*~~           +\n");
     printf("++++++++++++++++++++++++++++\n\n");
+    if (chances == 0){
     printf("  ==================        \n");
     printf("  ||//             |        \n");
     printf("  ||/              O        \n");
@@ -64,6 +65,61 @@ void cabecalho(){
     printf("  ||              / \\      \n");
     printf("  ||                        \n");
     printf("  -------------------       \n");
+    }
+    if (chances == 1){
+    printf("  ==================        \n");
+    printf("  ||//             |        \n");
+    printf("  ||/              O        \n");
+    printf("  ||              /|\\      \n");
+    printf("  ||              /         \n");
+    printf("  ||                        \n");
+    printf("  -------------------       \n");
+    }
+    if (chances == 2){
+    printf("  ==================        \n");
+    printf("  ||//             |        \n");
+    printf("  ||/              O        \n");
+    printf("  ||              /|\\      \n");
+    printf("  ||                        \n");
+    printf("  ||                        \n");
+    printf("  -------------------       \n");    
+    }
+    if (chances == 3){
+    printf("  ==================        \n");
+    printf("  ||//             |        \n");
+    printf("  ||/              O        \n");
+    printf("  ||              /|        \n");
+    printf("  ||                        \n");
+    printf("  ||                        \n");
+    printf("  -------------------       \n");
+    }
+    if (chances == 4){
+    printf("  ==================        \n");
+    printf("  ||//             |        \n");
+    printf("  ||/              O        \n");
+    printf("  ||              /         \n");
+    printf("  ||                        \n");
+    printf("  ||                        \n");
+    printf("  -------------------       \n");
+    }
+    if (chances == 5){
+    printf("  ==================        \n");
+    printf("  ||//             |        \n");
+    printf("  ||/              O        \n");
+    printf("  ||                        \n");
+    printf("  ||                        \n");
+    printf("  ||                        \n");
+    printf("  -------------------       \n");
+    }
+    if (chances == 6){
+    printf("  ==================        \n");
+    printf("  ||//             |        \n");
+    printf("  ||/                       \n");
+    printf("  ||                        \n");
+    printf("  ||                        \n");
+    printf("  ||                        \n");
+    printf("  -------------------       \n");
+    }
 }
 
 void imprimir_certas(char letras_certas[], int max){
