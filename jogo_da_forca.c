@@ -18,12 +18,13 @@ void cabecalho(int);
 void imprimir_certas(char letras_certas[], int);
 void imprimir_tentativas(char letras_tentadas[], int);
 void verifica_fim(int, int);
-char capta_letra(int, char letra[]);
+char capta_letra(char letra[]);
 void verifica_letra(int *, int, char palavra_misteriosa[], char letras_certas[], char letra[], int *vitoria, int posicao, char letras_tentadas[]);
+void imprime_tentativas_restantes(int);
 
 int main (){
     //declaração de variáveis
-    char palavra_misteriosa[] = {"bola"};
+    char palavra_misteriosa[] = {"camiseta"};
     char letra[1];
     char letras_certas[sizeof(palavra_misteriosa)-1];
     char letras_tentadas[sizeof(palavra_misteriosa)-1] = {""};
@@ -36,9 +37,10 @@ int main (){
     //execução do jogo
     do{
         cabecalho(chances);
+        imprime_tentativas_restantes(chances);
         imprimir_certas(letras_certas, max);
         imprimir_tentativas(letras_tentadas, posicao);
-        letra[0] = capta_letra(chances, letra);
+        letra[0] = capta_letra(letra);
         system ("cls"); 
         verifica_letra(&chances, max, palavra_misteriosa, letras_certas, letra, &vitoria, posicao, letras_tentadas);
         posicao++; //Posicionamento da letra na exibição das tentativas
@@ -52,11 +54,11 @@ int main (){
 
 //procedimentos e funções
 void cabecalho(int chances){
-    printf("++++++++++++++++++++++++++++\n");
-    printf("+          ~~*~~           +\n");
-    printf("+   ~# JOGO DA FORCA #~    +\n");
-    printf("+          ~~*~~           +\n");
-    printf("++++++++++++++++++++++++++++\n\n");
+    printf("============================\n");
+    printf("           ~~*~~            \n");
+    printf("    ~# JOGO DA FORCA #~     \n");
+    printf("           ~~*~~            \n");
+    printf("============================\n\n");
     if (chances == 0){
     printf("  ==================        \n");
     printf("  ||//             |        \n");
@@ -124,7 +126,7 @@ void cabecalho(int chances){
 
 void imprimir_certas(char letras_certas[], int max){
     int i;
-    printf("Palavra: "); 
+    printf("\nPalavra: "); 
     for (i=0; i<max; i++){
         printf("%c", letras_certas[i]);
     }
@@ -140,8 +142,7 @@ void imprimir_tentativas(char letras_tentadas[], int posicao){
     printf("\n");
 }
 
-char capta_letra(int chances, char letra[]){
-    printf("Voce tem %i tentativas.\n", chances);
+char capta_letra(char letra[]){
     printf("Informe uma letra: ");
     scanf(" %c", &letra[0]); 
     return (tolower(letra[0]));
@@ -165,11 +166,25 @@ void verifica_letra(int *chances, int max, char palavra_misteriosa[], char letra
 
 void verifica_fim(int vitoria, int max){
     if (vitoria == max){// Condição de verificação do fim do jogo
-        printf("Parabens voce acertou a palavra!\n");
-        printf("Fim de jogo!\n");
+        printf("=====================================================\n");
+        printf("                         ~#~                         \n");
+        printf("                       PARABENS!                     \n");
+        printf("               Voce acertou a palavra!               \n");
+        printf("                     Fim de jogo                     \n");
+        printf("                         ~#~                         \n");
+        printf("=====================================================\n");
+
     } 
     else{
-        printf("Voce nao conseguiu acertar a palavra.\n");
-        printf("Fim de jogo!\n");
+        printf("=====================================================\n");
+        printf("                         ~#~                         \n");
+        printf("                     FIM DE JOGO                     \n");
+        printf("             Voce nao acertou a palavra!             \n");
+        printf("                         ~#~                         \n");
+        printf("=====================================================\n");
     }
+}
+
+void imprime_tentativas_restantes(int chances){
+    printf("Voce tem %i tentativas\n", chances);
 }
