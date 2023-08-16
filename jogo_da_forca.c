@@ -16,7 +16,9 @@
 
 // protótipos
 void cabecalho();
+void menu_inicial();
 void animacao(int);
+void musica_abertura();
 void musica_vitoria();
 void musica_perdedor();
 void imprimir_certas(char letras_certas[], int);
@@ -29,7 +31,7 @@ void imprime_tentativas_restantes(int);
 int main()
 {
     // declaração de variáveis
-    char palavra_misteriosa[] = {"camiseta"};
+    char palavra_misteriosa[] = {"bola"};
     char letra[1];
     char letras_certas[strlen(palavra_misteriosa)];
     char letras_tentadas[30];
@@ -38,8 +40,11 @@ int main()
     int chances = 6;
     int vitoria = 0;
     int posicao = 0;
+    int opcao;
 
     // execução do jogo
+    menu_inicial();
+    musica_abertura();
     do
     {
         animacao(chances);
@@ -64,6 +69,14 @@ void cabecalho(){
     printf("           ~~*~~            \n");
     printf("    ~# JOGO DA FORCA #~     \n");
     printf("           ~~*~~            \n");
+    printf("============================\n\n");
+}
+
+void menu_inicial(){
+    cabecalho();
+    printf(" [1] Start                  \n");
+    printf(" [2] Options                \n");
+    printf("                            \n");
     printf("============================\n\n");
 }
 
@@ -232,6 +245,40 @@ void animacao(int chances){
         }
     }
 
+void musica_abertura(){
+    int n1 = 528, t1 = 200; //Hz //milisegundos
+    int n2 = 440, t2 = 200;
+    int n3 = 334, t3 = 2000;
+    int n4 = 440, t4 = 500;
+    int n5 = 528, t5 = 500;
+    int n6 = 593, t6 = 1000;
+    int n7 = 440, t7 = 1500;
+    int n8 = 528, t8 = 1500;
+    int n9 = 498, t9 = 400; 
+    int n10 = 528, t10 = 400; 
+    int n11 = 593, t11 = 400; 
+    int n12 = 392, t12 = 400; 
+    int n13 = 670, t13 = 1500; 
+    int n14 = 593, t14 = 1500;
+
+    Beep(n1, t1);
+    Beep(n2, t2);
+    Beep(n3, t3);
+    Sleep(400);
+    Beep(n4, t4);
+    Beep(n5, t5);
+    Beep(n6, t6);
+    Beep(n7, t7);
+    Sleep(400);
+    Beep(n8, t8);
+    Beep(n9, t9);
+    Beep(n10, t10);
+    Beep(n11, t11);
+    Beep(n12, t12);
+    Beep(n13, t13);
+    Beep(n14, t14);
+}
+
 void musica_vitoria(){
     int f1 = 800, d1 = 100; //Hz //milisegundos
     int f2 = 800, d2 = 50;
@@ -247,7 +294,7 @@ void musica_vitoria(){
 
 void musica_perdedor(){
     int f1 = 600, d1 = 600; //Hz //milisegundos
-    int f2 = 500, d2 = 600;
+    int f2 = 500, d2 = 500;
     int f3 = 400, d3 = 900;
 
     Beep(f1, d1);
