@@ -17,6 +17,8 @@
 // protótipos
 void cabecalho();
 void animacao(int);
+void musica_vitoria();
+void musica_perdedor();
 void imprimir_certas(char letras_certas[], int);
 void imprimir_tentativas(char letras_tentadas[], int);
 void verifica_fim(int, int);
@@ -48,7 +50,7 @@ int main()
         system("cls");
         verifica_letra(&chances, max, palavra_misteriosa, letras_certas, letra, &vitoria, posicao, letras_tentadas);
         posicao++; // Posicionamento da letra na exibição das tentativas
-        if (vitoria == strlen(palavra_misteriosa)-1) // Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
+        if (vitoria+1 == max) // Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
             break;
     } while (chances != 0);
     animacao(chances);
@@ -230,6 +232,29 @@ void animacao(int chances){
         }
     }
 
+void musica_vitoria(){
+    int f1 = 800, d1 = 100; //Hz //milisegundos
+    int f2 = 800, d2 = 50;
+    int f3 = 800, d3 = 50;
+    int f4 = 900, d4 = 600; 
+
+    Beep(f1, d1);
+    Sleep(400);
+    Beep(f2, d2);
+    Beep(f3, d3);
+    Beep(f4, d4);
+}
+
+void musica_perdedor(){
+    int f1 = 600, d1 = 600; //Hz //milisegundos
+    int f2 = 500, d2 = 600;
+    int f3 = 400, d3 = 900;
+
+    Beep(f1, d1);
+    Beep(f2, d2);
+    Beep(f3, d3);
+}
+
 void imprimir_certas(char letras_certas[], int max)
 {
     int i;
@@ -279,10 +304,15 @@ void verifica_letra(int *chances, int max, char palavra_misteriosa[], char letra
     }
 }
 
-void verifica_fim(int vitoria, int max)
-{
-    if (vitoria == max)
-    { // Condição de verificação do fim do jogo
+void verifica_fim(int vitoria, int max){
+    if (vitoria+1 == max){
+        musica_vitoria();
+    }
+    else{
+        musica_perdedor();
+    }
+
+    if (vitoria+1 == max){ // Condição de verificação do fim do jogo
         printf("=====================================================\n");
         printf("                         ~#~                         \n");
         printf("                       PARABENS!                     \n");
