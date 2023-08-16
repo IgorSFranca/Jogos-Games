@@ -33,7 +33,7 @@ void imprime_tentativas_restantes(int);
 int main()
 {
     // declaração de variáveis
-    char palavra_misteriosa[100] = "";
+    char palavra_misteriosa[100] = {"camiseta"};
     char letra[1];
     char letras_certas[strlen(palavra_misteriosa)];
     char letras_tentadas[30];
@@ -43,10 +43,13 @@ int main()
     int vitoria = 0;
     int posicao = 0;
     int opcao;
+    char resp;
 
     // execução do jogo
     menu_inicial();
-    //musica_abertura();
+    musica_abertura();
+    system("cls");
+    menu_inicial();
     opcao = opcao_inicial(opcao);
     system ("cls");
     switch (opcao){
@@ -66,8 +69,17 @@ int main()
             } while (chances != 0);
             animacao(chances);
             verifica_fim(vitoria, max);
-        case 2: 
-            criar_palavra(palavra_misteriosa);
+            break;
+        /*  case 2: 
+            do{
+                system("cls");
+                criar_palavra(palavra_misteriosa);
+                printf("Confirma a alteracao da palavra [s/n] ? ");
+                scanf(" %c", &resp);
+                resp = tolower(resp);
+            } while (resp != 's');
+                break;*/
+        case 3: 
             break;
     }
     return 0;
@@ -86,6 +98,7 @@ void menu_inicial(){
     cabecalho();
     printf(" [1] Start                  \n");
     printf(" [2] Options                \n");
+    printf(" [3] Exit                   \n");
     printf("                            \n");
     printf("============================\n\n");
 }
@@ -270,10 +283,10 @@ void musica_abertura(){
     int n6 = 593, t6 = 1000;
     int n7 = 440, t7 = 1500;
     int n8 = 528, t8 = 1500;
-    int n9 = 498, t9 = 400; 
-    int n10 = 528, t10 = 400; 
-    int n11 = 593, t11 = 400; 
-    int n12 = 392, t12 = 400; 
+    int n9 = 498, t9 = 500; 
+    int n10 = 528, t10 = 500; 
+    int n11 = 593, t11 = 500; 
+    int n12 = 392, t12 = 500; 
     int n13 = 670, t13 = 1500; 
     int n14 = 593, t14 = 1500;
 
