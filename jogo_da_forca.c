@@ -30,9 +30,9 @@ int main()
     char palavra_misteriosa[] = {"camiseta"};
     char letra[1];
     char letras_certas[strlen(palavra_misteriosa)];
-    char letras_tentadas[strlen(palavra_misteriosa)];
+    char letras_tentadas[30];
     memset(letras_certas, '_', strlen(palavra_misteriosa) - 1);
-    int max = sizeof(palavra_misteriosa) - 1;
+    int max = strlen(palavra_misteriosa);
     int chances = 6;
     int vitoria = 0;
     int posicao = 0;
@@ -47,13 +47,12 @@ int main()
         capta_letra(letra);
         system("cls");
         verifica_letra(&chances, max, palavra_misteriosa, letras_certas, letra, &vitoria, posicao, letras_tentadas);
-        posicao++;                                     // Posicionamento da letra na exibição das tentativas
+        posicao++; // Posicionamento da letra na exibição das tentativas
         if (vitoria == sizeof(palavra_misteriosa) - 1) // Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
             break;
     } while (chances != 0);
     animacao(chances);
     verifica_fim(vitoria, max);
-    system("pause");
     return 0;
 }
 
@@ -259,20 +258,23 @@ void capta_letra(char letra[]){
     letra[0] = tolower(letra[0]);
 }
 
-void verifica_letra(int *chances, int max, char palavra_misteriosa[], char letras_certas[], char letra[], int *vitoria, int posicao, char letras_tentadas[])
-{
-    int i, deducao_chance = 0;
-    for (i = 0; i < max; i++)
-    { // Laço para verificar se a letra informada pelo jogador está na palavra
+void verifica_letra(int *chances, int max, char palavra_misteriosa[], char letras_certas[], char letra[], int *vitoria, int posicao, char letras_tentadas[]){
+    int i, deducao_chance = 0, cont_certas = 0;
+    for (i = 0; i < max; i++){ // Laço para verificar se a letra informada pelo jogador está na palavra
         if (letra[0] == palavra_misteriosa[i]){
+            if (letra[0] != letras_certas[i]){
+                cont_certas++;
+                if (cont_certas == 1){
+                    *vitoria = *vitoria + 1; // Contador de acertos para verificar o fim do jogo
+                }
+            }
             letras_certas[i] = letra[0];
-            *vitoria = *vitoria + 1; // Contador de acertos para verificar o fim do jogo
             deducao_chance++;
         }
     }
     if (deducao_chance == 0)
         *chances = *chances - 1;
-    for (i = posicao; i < max; i++){ // Arquivamento das tentativas
+    for (i = posicao; i < 30; i++){ // Arquivamento das tentativas
         letras_tentadas[i] = letra[0];
     }
 }
