@@ -5,7 +5,7 @@
  * Autor: Igor França
  * Datas:
  *      Criação: 22 de julho de 2023;
- *      Modularização: 11/08/2023
+ *      Modularização: 11 de agosto 2023;
  */
 
 #include <stdio.h>
@@ -31,7 +31,7 @@ int main()
     char letra[1];
     char letras_certas[strlen(palavra_misteriosa)];
     char letras_tentadas[30];
-    memset(letras_certas, '_', strlen(palavra_misteriosa) - 1);
+    memset(letras_certas, '_', strlen(palavra_misteriosa));
     int max = strlen(palavra_misteriosa);
     int chances = 6;
     int vitoria = 0;
@@ -48,7 +48,7 @@ int main()
         system("cls");
         verifica_letra(&chances, max, palavra_misteriosa, letras_certas, letra, &vitoria, posicao, letras_tentadas);
         posicao++; // Posicionamento da letra na exibição das tentativas
-        if (vitoria == sizeof(palavra_misteriosa) - 1) // Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
+        if (vitoria == strlen(palavra_misteriosa)-1) // Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
             break;
     } while (chances != 0);
     animacao(chances);
