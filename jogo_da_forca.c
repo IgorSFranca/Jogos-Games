@@ -17,10 +17,12 @@
 // protótipos
 void cabecalho();
 void menu_inicial();
+int opcao_inicial(int);
 void animacao(int);
 void musica_abertura();
 void musica_vitoria();
 void musica_perdedor();
+void criar_palavra(char palavra_misteriosa[]);
 void imprimir_certas(char letras_certas[], int);
 void imprimir_tentativas(char letras_tentadas[], int);
 void verifica_fim(int, int);
@@ -31,7 +33,7 @@ void imprime_tentativas_restantes(int);
 int main()
 {
     // declaração de variáveis
-    char palavra_misteriosa[] = {"bola"};
+    char palavra_misteriosa[100] = "";
     char letra[1];
     char letras_certas[strlen(palavra_misteriosa)];
     char letras_tentadas[30];
@@ -44,22 +46,30 @@ int main()
 
     // execução do jogo
     menu_inicial();
-    musica_abertura();
-    do
-    {
-        animacao(chances);
-        imprime_tentativas_restantes(chances);
-        imprimir_certas(letras_certas, max);
-        imprimir_tentativas(letras_tentadas, posicao);
-        capta_letra(letra);
-        system("cls");
-        verifica_letra(&chances, max, palavra_misteriosa, letras_certas, letra, &vitoria, posicao, letras_tentadas);
-        posicao++; // Posicionamento da letra na exibição das tentativas
-        if (vitoria+1 == max) // Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
+    //musica_abertura();
+    opcao = opcao_inicial(opcao);
+    system ("cls");
+    switch (opcao){
+        case 1:
+            do
+            {
+                animacao(chances);
+                imprime_tentativas_restantes(chances);
+                imprimir_certas(letras_certas, max);
+                imprimir_tentativas(letras_tentadas, posicao);
+                capta_letra(letra);
+                system("cls");
+                verifica_letra(&chances, max, palavra_misteriosa, letras_certas, letra, &vitoria, posicao, letras_tentadas);
+                posicao++; // Posicionamento da letra na exibição das tentativas
+                if (vitoria+1 == max) // Condição para dar um Break caso o usuário acerte a palavra antes de finalizar as tentativas
+                    break;
+            } while (chances != 0);
+            animacao(chances);
+            verifica_fim(vitoria, max);
+        case 2: 
+            criar_palavra(palavra_misteriosa);
             break;
-    } while (chances != 0);
-    animacao(chances);
-    verifica_fim(vitoria, max);
+    }
     return 0;
 }
 
@@ -78,6 +88,12 @@ void menu_inicial(){
     printf(" [2] Options                \n");
     printf("                            \n");
     printf("============================\n\n");
+}
+
+int opcao_inicial(int opcao){
+    printf("Choice: ");
+    scanf("%i", &opcao);
+    return opcao;
 }
 
 void animacao(int chances){
@@ -300,6 +316,18 @@ void musica_perdedor(){
     Beep(f1, d1);
     Beep(f2, d2);
     Beep(f3, d3);
+}
+
+void criar_palavra(char palavra_misteriosa[]){
+    printf("============================\n");
+    printf("           ~~*~~            \n");
+    printf("       ~# OPTIONS #~        \n");
+    printf("           ~~*~~            \n");
+    printf("                            \n");
+    printf(" INFORMAR A PALAVRA SEGREDO \n");
+    printf("============================\n");
+    printf("Palavra: ");
+    scanf(" %s", palavra_misteriosa);
 }
 
 void imprimir_certas(char letras_certas[], int max)
