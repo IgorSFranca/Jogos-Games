@@ -70,18 +70,9 @@ int main()
             animacao(chances);
             verifica_fim(vitoria, max);
             break;
-        /*  case 2: 
-            do{
-                system("cls");
-                criar_palavra(palavra_misteriosa);
-                printf("Confirma a alteracao da palavra [s/n] ? ");
-                scanf(" %c", &resp);
-                resp = tolower(resp);
-            } while (resp != 's');
-                break;*/
-        case 3: 
-            break;
+            case 2: break;
     }
+    system("pause");
     return 0;
 }
 
@@ -97,8 +88,7 @@ void cabecalho(){
 void menu_inicial(){
     cabecalho();
     printf(" [1] Start                  \n");
-    printf(" [2] Options                \n");
-    printf(" [3] Exit                   \n");
+    printf(" [2] Exit                   \n");
     printf("                            \n");
     printf("============================\n\n");
 }
