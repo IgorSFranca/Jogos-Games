@@ -18,7 +18,7 @@ void select_option(int*);
 void create_players(char player1[], char player2[]);
 void inicial_animation();
 void game_animation(char game[3][3]);
-void gameplay(int move_player1[][2], int move_player2[][2], char player1[], char player2[], char game[3][3]);
+void gameplay(char player1[], char player2[], char game[3][3]);
 void print_players(char player1[], char player2[]);
 
 int main (){
@@ -26,12 +26,10 @@ int main (){
     char player1[] = {"Player 1"};
     char player2[] = {"Player 2"};
     char game[3][3] = {
-        {'_','_','_'},
-        {'_','_','_'},
-        {'_','_','_'}
+        {' ',' ',' '},
+        {' ',' ',' '},
+        {' ',' ',' '}
     }; //Preenche o jogo de acordo com os movimentos
-    int move_player1[4][2]; //Arquiva a linha e coluna jogada
-    int move_player2[4][2]; //Arquiva a linha e coluna jogada
 
     do{
         system ("cls");
@@ -41,7 +39,7 @@ int main (){
         switch (option){
             case 1:
                 inicial_animation();
-                gameplay(move_player1, move_player2, player1, player2, game);
+                gameplay(player1, player2, game);
                 break;
             case 2:
                 system ("cls");
@@ -244,10 +242,12 @@ void game_animation(char game[3][3]){
     printf("          |           |          \n\n");
 }
 
-void gameplay(int move_player1[4][2], int move_player2[4][2], char player1[], char player2[], char game[3][3]){
+void gameplay(char player1[], char player2[], char game[3][3]){
     int round;
+    int l, c;
 
-    for (round=0; round<4; round++){//iteração das rodadas
+    for (round=0; round<5; round++){//iteração das rodadas
+        int ok = 0;
         system("cls");
         header();
         print_players(player1, player2);
@@ -255,15 +255,40 @@ void gameplay(int move_player1[4][2], int move_player2[4][2], char player1[], ch
         printf("                ~~~           \n");
         printf("             Round %i\n", round+1);
         printf("            %s \n", player1);
-        printf("Line: ");
-        scanf("%i", &move_player1[round][0]);
-        printf("Column: ");
-        scanf("%i", &move_player1[round][1]);
+        do{
+            printf("Line: ");
+            scanf("%i", &l);
+            printf("Column: ");
+            scanf("%i", &c);
+            if (game[l-1][c-1] == ' '){                
+                game[l-1][c-1] = 'X';
+                ok = 1;
+            }
+            else{
+                printf("Game not allowed\n");
+            }
+        } while (ok != 1);
 
-        printf("\n            %s \n", player2);
-        printf("Line: ");
-        scanf("%i", &move_player2[round][0]);
-        printf("Column: ");
-        scanf("%i", &move_player2[round][1]);
+        ok = 0;
+        system("cls");
+        header();
+        print_players(player1, player2);
+        game_animation(game);
+        printf("                ~~~           \n");
+        printf("             Round %i\n", round+1);
+        printf("            %s \n", player2);
+        do{
+            printf("Line: ");
+            scanf("%i", &l);
+            printf("Column: ");
+            scanf("%i", &c);
+            if (game[l-1][c-1] == ' '){
+                game[l-1][c-1] = 'O';
+                ok = 1;
+            }
+            else{
+                printf("Game not allowed\n");
+            }
+        } while (ok != 1);
     }
 }
