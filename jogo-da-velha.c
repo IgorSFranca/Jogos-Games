@@ -18,13 +18,15 @@ void select_option(int*);
 void create_players(char player1[], char player2[]);
 void inicial_animation();
 void game_animation(char game[3][3]);
-void gameplay(char player1[], char player2[], char game[3][3]);
+void gameplay(char player1[], char player2[], char game[3][3], char winner[]);
 void print_players(char player1[], char player2[]);
+void end_game_verification(char game[][3], char player1[], char player2[], char winner[]);
 
 int main (){
     int option;
     char player1[] = {"Player 1"};
     char player2[] = {"Player 2"};
+    char winner[] = {""};
     char game[3][3] = {
         {' ',' ',' '},
         {' ',' ',' '},
@@ -39,7 +41,7 @@ int main (){
         switch (option){
             case 1:
                 inicial_animation();
-                gameplay(player1, player2, game);
+                gameplay(player1, player2, game, winner);
                 break;
             case 2:
                 system ("cls");
@@ -242,7 +244,7 @@ void game_animation(char game[3][3]){
     printf("          |           |          \n\n");
 }
 
-void gameplay(char player1[], char player2[], char game[3][3]){
+void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
     int round;
     int l, c;
 
@@ -252,6 +254,8 @@ void gameplay(char player1[], char player2[], char game[3][3]){
         header();
         print_players(player1, player2);
         game_animation(game);
+
+        //Jogada do PLAYER 1
         printf("                ~~~           \n");
         printf("             Round %i\n", round+1);
         printf("            %s \n", player1);
@@ -269,11 +273,19 @@ void gameplay(char player1[], char player2[], char game[3][3]){
             }
         } while (ok != 1);
 
+        //Encerramento do jogo caso alguém complete a sequencia
+        end_game_verification(game, player1, player2, winner);
+        if (winner != '\0'){
+            break;
+        }
+
         ok = 0;
         system("cls");
         header();
         print_players(player1, player2);
         game_animation(game);
+
+        //Jogada do PLAYER 2
         printf("                ~~~           \n");
         printf("             Round %i\n", round+1);
         printf("            %s \n", player2);
@@ -290,5 +302,67 @@ void gameplay(char player1[], char player2[], char game[3][3]){
                 printf("Game not allowed\n");
             }
         } while (ok != 1);
+
+        //Encerramento do jogo caso alguém complete a sequencia
+        end_game_verification(game, player1, player2, winner);
+        if (winner != '\0'){
+            break;
+        }
+    }
+}
+
+void end_game_verification(char game[3][3], char player1[], char player2[], char winner[]){
+    int l, c;
+
+    //Verificando a vitória do Player 1
+    for (l=0; l<3; l++){
+        for (c=0; c<3; c++){
+            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
+                strcpy(winner, player1);
+                return;
+            }
+        }
+    }
+    for (l=1; l<3; l++){
+        for (c=1; c<3; c++){
+            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
+                strcpy(winner, player1);
+                return;
+            }
+        }
+    }
+    for (l=2; l<3; l++){
+        for (c=2; c<3; c++){
+            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
+                strcpy(winner, player1);
+                return;
+            }
+        }
+    }
+
+    //Verificando a vitória do Player 2
+    for (l=0; l<3; l++){
+        for (c=0; c<3; c++){
+            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
+                strcpy(winner, player2);
+                return;
+            }
+        }
+    }
+    for (l=1; l<3; l++){
+        for (c=1; c<3; c++){
+            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
+                strcpy(winner, player2);
+                return;
+            }
+        }
+    }
+    for (l=2; l<3; l++){
+        for (c=2; c<3; c++){
+            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
+                strcpy(winner, player2);
+                return;
+            }
+        }
     }
 }
