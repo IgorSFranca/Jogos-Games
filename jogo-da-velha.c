@@ -4,6 +4,16 @@
  * transversal, antes que o jogador adversário faça o mesmo. 
  * Autor: Igor França
  * Data de criação: 31 de outubro 
+ * 
+ * 
+
+Bugs
+01. X
+02. Quando completa a velha, o jogo não acaba
+03. Travar para não entrar uma letra ao invés do indice da jogada
+04. Arrumar a impressão das jogadas, para ficar mais intuitivo
+05. Necessário complementar a parte de código onde verifica as vitórias. 
+Incluí somente as linhas horizontais, faltam as verticais e diagonais.
  */
 
 #include <stdio.h>
