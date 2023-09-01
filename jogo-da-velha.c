@@ -9,12 +9,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 
 void header();
 void header_options();
 void header_menu();
 void select_option(int*);
 void create_players(char player1[], char player2[]);
+void inicial_animation(char player1[], char player2[]);
+void game_animation();
 
 int main (){
     int option;
@@ -28,6 +31,8 @@ int main (){
         select_option(&option);
         switch (option){
             case 1:
+                inicial_animation(player1, player2);
+                game_animation();
                 break;
             case 2:
                 system ("cls");
@@ -51,7 +56,7 @@ int main (){
 void header(){
     printf("=================================\n");
     printf("              ~#~                \n");
-    printf("          JOGO DA VELHA          \n");
+    printf("            ~ HASH ~             \n");
     printf("              ~#~                \n");
     printf("=================================\n");
 }
@@ -107,4 +112,114 @@ void create_players(char player1[], char player2[]){
         printf("Confirm [y/n]: ");
         scanf(" %c", &resp);
     } while (resp != 'y');
+}
+
+void inicial_animation(char player1[], char player2[]){
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~                        \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~                        \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ J                      \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JO                     \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOG                    \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO                   \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO                   \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO D                 \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA                \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA                \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA V              \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA VE             \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA VEL            \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA VELH           \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA VELHA          \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100); system("cls");
+    printf("=================================\n");
+    printf("              ~#~                \n");
+    printf("        ~ JOGO DA VELHA ~        \n");
+    printf("              ~#~                \n");
+    printf("=================================\n");
+    Sleep(100);
+    printf("                                 \n");
+    printf("                                 \n");
+    printf(" Player one: %s\n", player1);
+    printf(" Player two: %s\n", player2);
+    printf("                                 \n");
+    printf("=================================\n");
+}
+
+void game_animation(){
+    
 }
