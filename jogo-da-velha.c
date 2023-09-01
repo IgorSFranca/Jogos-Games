@@ -16,13 +16,22 @@ void header_options();
 void header_menu();
 void select_option(int*);
 void create_players(char player1[], char player2[]);
-void inicial_animation(char player1[], char player2[]);
-void game_animation();
+void inicial_animation();
+void game_animation(char game[3][3]);
+void gameplay(int move_player1[][2], int move_player2[][2], char player1[], char player2[], char game[3][3]);
+void print_players(char player1[], char player2[]);
 
 int main (){
     int option;
     char player1[] = {"Player 1"};
     char player2[] = {"Player 2"};
+    char game[3][3] = {
+        {'_','_','_'},
+        {'_','_','_'},
+        {'_','_','_'}
+    }; //Preenche o jogo de acordo com os movimentos
+    int move_player1[4][2]; //Arquiva a linha e coluna jogada
+    int move_player2[4][2]; //Arquiva a linha e coluna jogada
 
     do{
         system ("cls");
@@ -31,8 +40,8 @@ int main (){
         select_option(&option);
         switch (option){
             case 1:
-                inicial_animation(player1, player2);
-                game_animation();
+                inicial_animation();
+                gameplay(move_player1, move_player2, player1, player2, game);
                 break;
             case 2:
                 system ("cls");
@@ -114,7 +123,7 @@ void create_players(char player1[], char player2[]){
     } while (resp != 'y');
 }
 
-void inicial_animation(char player1[], char player2[]){
+void inicial_animation(){
     Sleep(100); system("cls");
     printf("=================================\n");
     printf("              ~#~                \n");
@@ -212,7 +221,10 @@ void inicial_animation(char player1[], char player2[]){
     printf("              ~#~                \n");
     printf("=================================\n");
     Sleep(100);
-    printf("                                 \n");
+
+}
+
+void print_players(char player1[], char player2[]){
     printf("                                 \n");
     printf(" Player one: %s\n", player1);
     printf(" Player two: %s\n", player2);
@@ -220,6 +232,38 @@ void inicial_animation(char player1[], char player2[]){
     printf("=================================\n");
 }
 
-void game_animation(){
-    
+void game_animation(char game[3][3]){
+    printf("\n          |           |          \n");
+    printf("     %c    |     %c     |     %c   \n", game[0][0], game[0][1], game[0][2]);
+    printf("__________|___________|__________\n");
+    printf("          |           |          \n");
+    printf("     %c    |     %c     |     %c   \n", game[1][0], game[1][1], game[1][2]);
+    printf("__________|___________|__________\n");
+    printf("          |           |          \n");
+    printf("     %c    |     %c     |     %c   \n", game[2][0], game[2][1], game[2][2]);
+    printf("          |           |          \n\n");
+}
+
+void gameplay(int move_player1[4][2], int move_player2[4][2], char player1[], char player2[], char game[3][3]){
+    int round;
+
+    for (round=0; round<4; round++){//iteração das rodadas
+        system("cls");
+        header();
+        print_players(player1, player2);
+        game_animation(game);
+        printf("                ~~~           \n");
+        printf("             Round %i\n", round+1);
+        printf("            %s \n", player1);
+        printf("Line: ");
+        scanf("%i", &move_player1[round][0]);
+        printf("Column: ");
+        scanf("%i", &move_player1[round][1]);
+
+        printf("\n            %s \n", player2);
+        printf("Line: ");
+        scanf("%i", &move_player2[round][0]);
+        printf("Column: ");
+        scanf("%i", &move_player2[round][1]);
+    }
 }
