@@ -8,14 +8,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void header();
 void header_options();
 void header_menu();
 void select_option(int*);
+void create_players(char player1[], char player2[]);
 
 int main (){
     int option;
+    char player1[] = {"Player 1"};
+    char player2[] = {"Player 2"};
 
     do{
         system ("cls");
@@ -30,6 +34,12 @@ int main (){
                 header();
                 header_options();
                 select_option(&option);
+                switch (option){
+                    case 1: 
+                        create_players(player1, player2);
+                    case 2: 
+                        break;
+                }
                 break;
             case 0:
                 break;
@@ -72,4 +82,29 @@ void select_option(int *option){
     printf("Insert option: ");
     scanf("%i", &temp);
     *option = temp;
+}
+
+void create_players(char player1[], char player2[]){
+    char resp;
+    do{
+        system("cls");
+        header();
+        printf("                                 \n");
+        printf("          INSERT PLAYERS         \n");
+        printf("First Player name: ");
+        scanf(" %s", player1);
+        printf("Confirm [y/n]: ");
+        scanf(" %c", &resp);
+    } while (resp != 'y');
+    do{
+        system("cls");
+        header();
+        printf("                                 \n");
+        printf("          INSERT PLAYERS         \n");
+        printf("First Player: Concluded          \n");
+        printf("\nSecond Player name: ");
+        scanf(" %s", player2);
+        printf("Confirm [y/n]: ");
+        scanf(" %c", &resp);
+    } while (resp != 'y');
 }
