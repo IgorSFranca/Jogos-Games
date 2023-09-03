@@ -8,12 +8,13 @@
  * 
 
 Bugs
-01. X
+01. Retorno ao menu principal quando o primeiro jogador faz a sua jogada
 02. Quando completa a velha, o jogo não acaba
 03. Travar para não entrar uma letra ao invés do indice da jogada
 04. Arrumar a impressão das jogadas, para ficar mais intuitivo
 05. Necessário complementar a parte de código onde verifica as vitórias. 
 Incluí somente as linhas horizontais, faltam as verticais e diagonais.
+06. Incluir opção de reiniciar o jogo. Limpar as jogadas
  */
 
 #include <stdio.h>
@@ -31,12 +32,13 @@ void game_animation(char game[3][3]);
 void gameplay(char player1[], char player2[], char game[3][3], char winner[]);
 void print_players(char player1[], char player2[]);
 void end_game_verification(char game[][3], char player1[], char player2[], char winner[]);
+void end_game_animation(char winner[]);
 
 int main (){
     int option;
     char player1[] = {"Player 1"};
     char player2[] = {"Player 2"};
-    char winner[] = {""};
+    char winner[] = {"roling"};
     char game[3][3] = {
         {' ',' ',' '},
         {' ',' ',' '},
@@ -52,6 +54,7 @@ int main (){
             case 1:
                 inicial_animation();
                 gameplay(player1, player2, game, winner);
+                end_game_animation(winner);
                 break;
             case 2:
                 system ("cls");
@@ -283,9 +286,9 @@ void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
             }
         } while (ok != 1);
 
-        //Encerramento do jogo caso alguém complete a sequencia
+        //Verificação de vencedor
         end_game_verification(game, player1, player2, winner);
-        if (winner != '\0'){
+        if (strcmp(winner, "roling") != 0){
             break;
         }
 
@@ -313,9 +316,9 @@ void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
             }
         } while (ok != 1);
 
-        //Encerramento do jogo caso alguém complete a sequencia
+        //Verificação de vencedor
         end_game_verification(game, player1, player2, winner);
-        if (winner != '\0'){
+        if (strcmp(winner, "roling") != 0){
             break;
         }
     }
@@ -326,53 +329,58 @@ void end_game_verification(char game[3][3], char player1[], char player2[], char
 
     //Verificando a vitória do Player 1
     for (l=0; l<3; l++){
-        for (c=0; c<3; c++){
-            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
-                strcpy(winner, player1);
-                return;
-            }
+        if (game[l][0] == 'X' && game[l][1] == 'X' && game[l][2] == 'X'){
+            strcpy(winner, player1);
+            return;
         }
     }
-    for (l=1; l<3; l++){
-        for (c=1; c<3; c++){
-            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
-                strcpy(winner, player1);
-                return;
-            }
+    for (c=0; c<3; c++){
+        if (game[0][c] == 'X' && game[1][c] == 'X' && game[2][c] == 'X'){
+            strcpy(winner, player1);
+            return;
         }
     }
-    for (l=2; l<3; l++){
-        for (c=2; c<3; c++){
-            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
-                strcpy(winner, player1);
-                return;
-            }
-        }
+    if (game[0][0] == 'X' && game[1][1] == 'X' && game[2][2] == 'X'){
+        strcpy(winner, player1);
+        return;
+    }
+    if (game[0][2] == 'X' && game[1][1] == 'X' && game[2][0] == 'X'){
+        strcpy(winner, player1);
+        return;
     }
 
     //Verificando a vitória do Player 2
-    for (l=0; l<3; l++){
-        for (c=0; c<3; c++){
-            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
-                strcpy(winner, player2);
-                return;
-            }
+     for (l=0; l<3; l++){
+        if (game[l][0] == 'O' && game[l][1] == 'O' && game[l][2] == 'O'){
+            strcpy(winner, player2);
+            return;
         }
     }
-    for (l=1; l<3; l++){
-        for (c=1; c<3; c++){
-            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
-                strcpy(winner, player2);
-                return;
-            }
+    for (c=0; c<3; c++){
+        if (game[0][c] == 'O' && game[1][c] == 'O' && game[2][c] == 'O'){
+            strcpy(winner, player2);
+            return;
         }
     }
-    for (l=2; l<3; l++){
-        for (c=2; c<3; c++){
-            if (game[l][c] == 'X' && game[l][c+1] == 'X' && game[l][c+2] == 'X'){
-                strcpy(winner, player2);
-                return;
-            }
-        }
+    if (game[0][0] == 'O' && game[1][1] == 'O' && game[2][2] == 'O'){
+        strcpy(winner, player2);
+        return;
+    }
+    if (game[0][2] == 'O' && game[1][1] == 'O' && game[2][0] == 'O'){
+        strcpy(winner, player2);
+        return;
     }
 }
+
+void end_game_animation(char winner[]){
+    system("cls");
+    header();
+    printf("\n");
+    printf("              ~ # ~              \n");
+    printf("         CONGRATULATIONS         \n");
+    printf("            %s\n", winner);
+    printf("           ~ YOU WON ~           \n");
+    printf("              ~ # ~              \n");
+    printf("\n");
+    system("pause");
+}   
