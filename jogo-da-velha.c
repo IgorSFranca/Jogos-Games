@@ -8,8 +8,6 @@
  * 
 
 Bugs
-01. Retorno ao menu principal quando o primeiro jogador faz a sua jogada
-02. Quando completa a velha, o jogo não acaba
 03. Travar para não entrar uma letra ao invés do indice da jogada
 04. Arrumar a impressão das jogadas, para ficar mais intuitivo
 05. Necessário complementar a parte de código onde verifica as vitórias. 
@@ -105,9 +103,15 @@ void header_menu(){
 }
 
 void select_option(int *option){
-    int temp;
-    printf("Insert option: ");
-    scanf("%i", &temp);
+    int temp = -1;
+    do{
+        printf("Insert option: ");
+        scanf(" %i", &temp);
+        if (temp != 1 && temp != 2 && temp != 0){
+            printf("Invalid option!\n");
+            while(getchar() != '\n'){} //limpa o buffer caso seja inserido uma letra ao invés de numero
+        }
+    } while (temp != 1 && temp != 2 && temp != 0);
     *option = temp;
 }
 
