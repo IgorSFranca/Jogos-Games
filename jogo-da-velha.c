@@ -5,12 +5,8 @@
  * Autor: Igor França
  * Data de criação: 31 de outubro 
  * 
- * 
-
-Bugs
-06. Incluir opção de reiniciar o jogo. Limpar as jogadas
  */
-
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
