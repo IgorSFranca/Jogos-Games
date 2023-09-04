@@ -103,7 +103,7 @@ void header_menu(){
 }
 
 void select_option(int *option){
-    int temp = -1;
+    int temp;
     do{
         printf("Insert option: ");
         scanf(" %i", &temp);
@@ -277,10 +277,25 @@ void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
         printf("             Round %i\n", round+1);
         printf("            %s \n", player1);
         do{
-            printf("Line: ");
-            scanf("%i", &l);
-            printf("Column: ");
-            scanf("%i", &c);
+
+            do{ //Laço que verifica se o usuário inseriu números, e não letras
+                printf("Line: ");
+                scanf("%i", &l);
+                if (l != 1 && l != 2 && l != 3){
+                    printf("Invalid line\n");
+                    while (getchar() != '\n'){} //Limpando buffer
+                }
+            } while (l != 1 && l != 2 && l != 3);
+
+            do{ //Laço que verifica se o usuário inseriu números, e não letras
+                printf("Column: ");
+                scanf("%i", &c);
+                if (c != 1 && l != 2 && c != 3){
+                    printf("Invalid Column\n");
+                    while (getchar() != '\n'){} //Limpando buffer
+                }
+            } while (c != 1 && l != 2 && c != 3);
+
             if (game[l-1][c-1] == ' '){                
                 game[l-1][c-1] = 'X';
                 ok = 1;
@@ -307,10 +322,22 @@ void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
         printf("             Round %i\n", round+1);
         printf("            %s \n", player2);
         do{
-            printf("Line: ");
-            scanf("%i", &l);
-            printf("Column: ");
-            scanf("%i", &c);
+            do{ //Laço que verifica se o usuário inseriu números, e não letras
+                printf("Line: ");
+                if (scanf("%i", &l) != 1 || (l != 1 && l != 2 && l != 3)){
+                    printf("Invalid line\n");
+                    while (getchar() != '\n'){} //Limpando buffer
+                }
+            } while (l != 0 && l != 1 && l != 2);
+
+            do{ //Laço que verifica se o usuário inseriu números, e não letras
+                printf("Column: ");
+                if (scanf("%i", &c) != 1 || (c != 1 && c != 2 && c != 3)){
+                    printf("Invalid Column\n");
+                    while (getchar() != '\n'){} //Limpando buffer
+                }
+            } while (c != 1 && c != 2 && c != 3);
+
             if (game[l-1][c-1] == ' '){
                 game[l-1][c-1] = 'O';
                 ok = 1;
