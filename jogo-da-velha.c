@@ -8,7 +8,6 @@
  * 
 
 Bugs
-03. Travar para não entrar uma letra ao invés do indice da jogada
 04. Arrumar a impressão das jogadas, para ficar mais intuitivo
 05. Necessário complementar a parte de código onde verifica as vitórias. 
 Incluí somente as linhas horizontais, faltam as verticais e diagonais.
@@ -252,13 +251,16 @@ void print_players(char player1[], char player2[]){
 void game_animation(char game[3][3]){
     printf("\n          |           |          \n");
     printf("     %c    |     %c     |     %c   \n", game[0][0], game[0][1], game[0][2]);
+    printf("    1 1   |    1 2    |     1 3  \n");
     printf("__________|___________|__________\n");
     printf("          |           |          \n");
     printf("     %c    |     %c     |     %c   \n", game[1][0], game[1][1], game[1][2]);
+    printf("    2 1   |    2 2    |     2 3  \n");
     printf("__________|___________|__________\n");
     printf("          |           |          \n");
     printf("     %c    |     %c     |     %c   \n", game[2][0], game[2][1], game[2][2]);
-    printf("          |           |          \n\n");
+    printf("    3 1   |    3 2    |     3 3  \n");
+    printf("          |           |         \n\n");
 }
 
 void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
@@ -290,11 +292,11 @@ void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
             do{ //Laço que verifica se o usuário inseriu números, e não letras
                 printf("Column: ");
                 scanf("%i", &c);
-                if (c != 1 && l != 2 && c != 3){
+                if (c != 1 && c != 2 && c != 3){
                     printf("Invalid Column\n");
                     while (getchar() != '\n'){} //Limpando buffer
                 }
-            } while (c != 1 && l != 2 && c != 3);
+            } while (c != 1 && c != 2 && c != 3);
 
             if (game[l-1][c-1] == ' '){                
                 game[l-1][c-1] = 'X';
@@ -325,16 +327,16 @@ void gameplay(char player1[], char player2[], char game[3][3], char winner[]){
             do{ //Laço que verifica se o usuário inseriu números, e não letras
                 printf("Line: ");
                 if (scanf("%i", &l) != 1 || (l != 1 && l != 2 && l != 3)){
-                    printf("Invalid line\n");
                     while (getchar() != '\n'){} //Limpando buffer
+                    printf("Invalid line\n");
                 }
-            } while (l != 0 && l != 1 && l != 2);
+            } while (l != 1 && l != 2 && l != 3);
 
             do{ //Laço que verifica se o usuário inseriu números, e não letras
                 printf("Column: ");
                 if (scanf("%i", &c) != 1 || (c != 1 && c != 2 && c != 3)){
-                    printf("Invalid Column\n");
                     while (getchar() != '\n'){} //Limpando buffer
+                    printf("Invalid Column\n");
                 }
             } while (c != 1 && c != 2 && c != 3);
 
