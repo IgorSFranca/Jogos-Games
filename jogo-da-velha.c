@@ -8,9 +8,6 @@
  * 
 
 Bugs
-04. Arrumar a impressão das jogadas, para ficar mais intuitivo
-05. Necessário complementar a parte de código onde verifica as vitórias. 
-Incluí somente as linhas horizontais, faltam as verticais e diagonais.
 06. Incluir opção de reiniciar o jogo. Limpar as jogadas
  */
 
@@ -30,6 +27,7 @@ void gameplay(char player1[], char player2[], char game[3][3], char winner[]);
 void print_players(char player1[], char player2[]);
 void end_game_verification(char game[][3], char player1[], char player2[], char winner[]);
 void end_game_animation(char winner[]);
+void clean_game(char game[3][3], char winner[]);
 
 int main (){
     int option;
@@ -61,7 +59,11 @@ int main (){
                 switch (option){
                     case 1: 
                         create_players(player1, player2);
+                        break;
                     case 2: 
+                        clean_game(game, winner); 
+                        break;
+                    case 3: 
                         break;
                 }
                 break;
@@ -85,7 +87,8 @@ void header_options(){
     printf("           ~ OPTIONS ~           \n");
     printf("                                 \n");
     printf(" [1] Create players              \n");
-    printf(" [2] Return                      \n");
+    printf(" [2] Clean Game                  \n");
+    printf(" [3] Return                      \n");
     printf("                                 \n");
     printf("=================================\n");
 }
@@ -106,11 +109,11 @@ void select_option(int *option){
     do{
         printf("Insert option: ");
         scanf(" %i", &temp);
-        if (temp != 1 && temp != 2 && temp != 0){
+        if (temp != 1 && temp != 2 && temp != 3 && temp != 0){
             printf("Invalid option!\n");
             while(getchar() != '\n'){} //limpa o buffer caso seja inserido uma letra ao invés de numero
         }
-    } while (temp != 1 && temp != 2 && temp != 0);
+    } while (temp != 1 && temp != 2 && temp != 3 && temp != 0);
     *option = temp;
 }
 
@@ -416,4 +419,17 @@ void end_game_animation(char winner[]){
     printf("              ~ # ~              \n");
     printf("\n");
     system("pause");
-}   
+}
+
+void clean_game(char game[3][3], char winner []){
+    int i, j;
+    for (i=0; i<3; i++){
+        for (j=0; j<3; j++){
+            game[i][j] = ' ';
+        }
+    }
+    strcpy(winner, "roling");
+    printf("Game cleaned!\n");
+    printf("Returning...");
+    Sleep(2000);
+}
