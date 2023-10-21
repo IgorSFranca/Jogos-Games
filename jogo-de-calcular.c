@@ -21,9 +21,24 @@ int main (){
     int opcao_dificuldade;
     int opcao_operacao;
 
-    cabecalho();
-    menu_inicial();
-    opcao_inicial = opcao();
+    do{
+        system ("cls");
+        cabecalho();
+        menu_inicial();
+        opcao_inicial = opcao();
+        switch (opcao_inicial){
+            case 1:
+            case 2:
+            case 3:
+            case 4: 
+            break;
+            default:
+                printf("Opcao nao encontrada.\n");
+                printf("Informe novamente.\n");
+                system ("pause");
+                break;
+        }
+    } while (opcao_inicial != 4);
 
     return 0;
 }
@@ -41,6 +56,7 @@ void menu_inicial(){
     printf(" [1] INICIAR                       \n");
     printf(" [2] SELECIONAR DIFICULDADE        \n");
     printf(" [3] SELECIONAR OPERACAO MATEMATICA\n");
+    printf(" [4] ENCERRAR                      \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
@@ -49,6 +65,7 @@ void menu_dificuldade(){
     printf(" [1] FACIL                         \n");
     printf(" [2] MEDIO                         \n");
     printf(" [3] DIFICIL                       \n");
+    printf(" [4] VOLTAR                        \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
@@ -58,6 +75,7 @@ void menu_operacao(){
     printf(" [2] SUBTRACAO                     \n");
     printf(" [3] MULTIPLICACAO                 \n");
     printf(" [4] DIVISAO                       \n");
+    printf(" [5] VOLTAR                        \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
