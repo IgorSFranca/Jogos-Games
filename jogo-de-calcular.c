@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 void cabecalho();
 void menu_inicial();
@@ -20,6 +21,7 @@ int main (){
     int opcao_inicial;
     int opcao_dificuldade;
     int opcao_operacao;
+    int i;
 
     do{
         system ("cls");
@@ -31,6 +33,13 @@ int main (){
             case 2:
             case 3:
             case 4: 
+                printf("Encerrando jogo");
+                for (i=0; i<3; i++){
+                    printf(".");
+                    Sleep(600);
+                }
+                printf("\n");
+                printf("Jogo encerrado.\n");
             break;
             default:
                 printf("Opcao nao encontrada.\n");
