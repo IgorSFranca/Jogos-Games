@@ -14,8 +14,16 @@ void cabecalho();
 void menu_inicial();
 void menu_dificuldade();
 void menu_operacao();
+int opcao();
 
 int main (){
+    int opcao_inicial;
+    int opcao_dificuldade;
+    int opcao_operacao;
+
+    cabecalho();
+    menu_inicial();
+    opcao_inicial = opcao();
 
     return 0;
 }
@@ -51,4 +59,11 @@ void menu_operacao(){
     printf(" [3] MULTIPLICACAO                 \n");
     printf(" [4] DIVISAO                       \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+}
+
+int opcao(){
+    int opcao;
+    printf("Informe a opcao desejada: ");
+    scanf("%i", &opcao);
+    return opcao;
 }
