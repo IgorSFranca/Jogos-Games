@@ -16,6 +16,7 @@ void menu_inicial();
 void menu_dificuldade();
 void menu_operacao();
 int opcao();
+int selecionar_dificuldade();
 
 int main (){
     int opcao_inicial;
@@ -30,7 +31,10 @@ int main (){
         opcao_inicial = opcao();
         switch (opcao_inicial){
             case 1:
-            case 2:
+            case 2: 
+                opcao_dificuldade = selecionar_dificuldade();
+                printf("Opcao Dificuldade: %i", opcao_dificuldade);
+
             case 3:
             case 4: 
                 printf("Encerrando jogo");
@@ -92,5 +96,32 @@ int opcao(){
     int opcao;
     printf("Informe a opcao desejada: ");
     scanf("%i", &opcao);
+    return opcao;
+}
+
+int selecionar_dificuldade(){
+    int opcao;
+    int confirmacao = 0;
+    do{
+        system ("cls");
+        cabecalho();
+        menu_dificuldade();
+
+        printf("Informe a dificuldade que deseja: ");
+        scanf("%i", &opcao);
+        printf("Dificuldade escolhida: ");
+        if (opcao == 1)
+            printf("FACIL\n");
+        else if (opcao == 2)
+            printf("MEDIO\n");
+        else if (opcao == 3)
+            printf("DIFICIL\n");
+        else if (opcao == 4)
+            printf("Retornar para o menu anterior.\n");
+
+        printf("Deseja confirmar a opcao? [1 SIM][0 NAO]");
+        scanf("%i", &confirmacao);
+    } while (confirmacao != 1);
+
     return opcao;
 }
