@@ -18,12 +18,14 @@ void cabecalho();
 void menu_inicial();
 void menu_dificuldade();
 void menu_operacao();
+void encerramento();
+void mostrar_configuracoes(int, int, int);
+void jogo(int, int, int);
 int opcao();
 int selecionar_dificuldade();
 int selecionar_operacao();
-void encerramento();
-void mostrar_configuracoes(int, int, int);
 int quantidade_rodadas();
+int numero_aleatorio();
 
 int main (){
     int opcao_inicial;
@@ -38,6 +40,8 @@ int main (){
         opcao_inicial = opcao();
         switch (opcao_inicial){
             case 1:
+                jogo(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                break;
             case 2: 
                 opcao_dificuldade = selecionar_dificuldade();
                 break;
@@ -250,4 +254,23 @@ int quantidade_rodadas(){
     } while (confirmacao != 1);
 
     return rodadas;
+}
+
+void jogo(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
+    system("cls");
+    cabecalho();
+
+}
+
+int numero_aleatorio(){
+    //intervalo
+    int min = 1;
+    int max = 100;
+    int numero_aleatorio;
+
+    srand(time(NULL)); //inicialização da semente
+
+    numero_aleatorio = rand()%(max-min + 1) + min; //Geração do númrero no intervalo
+
+    return numero_aleatorio;
 }
