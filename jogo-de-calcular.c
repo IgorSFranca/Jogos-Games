@@ -5,11 +5,14 @@
  * Autor: Igor França
  * Data de criação: 21 de outubro de 2023
  * 
+ * 
+ * 01. Função ranking
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
 
 void cabecalho();
 void menu_inicial();
@@ -19,12 +22,14 @@ int opcao();
 int selecionar_dificuldade();
 int selecionar_operacao();
 void encerramento();
-void mostrar_configuracoes(int, int);
+void mostrar_configuracoes(int, int, int);
+int quantidade_rodadas();
 
 int main (){
     int opcao_inicial;
     int opcao_dificuldade = 0;
     int opcao_operacao = 0;
+    int qtd_rodadas = 0;
 
     do{
         system ("cls");
@@ -39,11 +44,14 @@ int main (){
             case 3:
                 opcao_operacao = selecionar_operacao();
                 break;
-            case 4:
-                mostrar_configuracoes(opcao_dificuldade, opcao_operacao);
+            case 4: 
+                qtd_rodadas = quantidade_rodadas();
+                break;
+            case 5:
+                mostrar_configuracoes(opcao_dificuldade, opcao_operacao, qtd_rodadas);
                 system ("pause");
                 break;
-            case 5: 
+            case 6:
                 encerramento();
                 break;
             default:
@@ -52,7 +60,7 @@ int main (){
                 system ("pause");
                 break;
         }
-    } while (opcao_inicial != 5);
+    } while (opcao_inicial != 6);
 
     return 0;
 }
@@ -66,32 +74,33 @@ void cabecalho(){
 }
 
 void menu_inicial(){
-    printf("             MENU PRINCIPAL        \n");
-    printf(" [1] INICIAR                       \n");
-    printf(" [2] SELECIONAR DIFICULDADE        \n");
-    printf(" [3] SELECIONAR OPERACAO MATEMATICA\n");
-    printf(" [4] MOSTRAR CONFIGURACOES         \n");
-    printf(" [5] ENCERRAR                      \n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("              MENU PRINCIPAL         \n");
+    printf(" [1] INICIAR                         \n");
+    printf(" [2] SELECIONAR DIFICULDADE          \n");
+    printf(" [3] SELECIONAR OPERACAO MATEMATICA  \n");
+    printf(" [4] SELECIONAR QUANTIDADE DE RODADAS\n");
+    printf(" [5] MOSTRAR CONFIGURACOES           \n");
+    printf(" [6] ENCERRAR                        \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 void menu_dificuldade(){
-    printf("              DIFICULDADE          \n");
-    printf(" [1] FACIL                         \n");
-    printf(" [2] MEDIO                         \n");
-    printf(" [3] DIFICIL                       \n");
-    printf(" [4] VOLTAR                        \n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("               DIFICULDADE           \n");
+    printf(" [1] FACIL                           \n");
+    printf(" [2] MEDIO                           \n");
+    printf(" [3] DIFICIL                         \n");
+    printf(" [4] VOLTAR                          \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 void menu_operacao(){
-    printf("               OPERACAO            \n");
-    printf(" [1] ADICAO                        \n");
-    printf(" [2] SUBTRACAO                     \n");
-    printf(" [3] MULTIPLICACAO                 \n");
-    printf(" [4] DIVISAO                       \n");
-    printf(" [5] VOLTAR                        \n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("                OPERACAO             \n");
+    printf(" [1] ADICAO                          \n");
+    printf(" [2] SUBTRACAO                       \n");
+    printf(" [3] MULTIPLICACAO                   \n");
+    printf(" [4] DIVISAO                         \n");
+    printf(" [5] VOLTAR                          \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 int opcao(){
@@ -190,7 +199,7 @@ int selecionar_operacao(){
     return opcao;
 }
 
-void mostrar_configuracoes(int opcao_dificuldade, int opcao_operacao){
+void mostrar_configuracoes(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
     system ("cls");
     cabecalho();
     printf("      CONFIGURACOES ARMAZENADAS    \n");
@@ -216,5 +225,29 @@ void mostrar_configuracoes(int opcao_dificuldade, int opcao_operacao){
         printf("MULTIPLICACAO\n");
     else if (opcao_operacao == 4)
         printf("DIVISAO\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+    printf(" RODADAS: ");
+    if (qtd_rodadas == 0)
+        printf(" NAO SELECIONADA\n");
+    else
+        printf("%i\n", qtd_rodadas);
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+}
+
+int quantidade_rodadas(){
+    int rodadas;
+    int confirmacao = 0;
+
+    system ("cls");
+    cabecalho();
+    do{
+        printf("DESEJA QUANTAS RODADAS DE PERGUNTAS? \n");
+        scanf("%i", &rodadas);
+        printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+        printf("Deseja confirmar a opcao? [1 SIM][0 NAO] ");
+        scanf("%i", &confirmacao);
+    } while (confirmacao != 1);
+
+    return rodadas;
 }
