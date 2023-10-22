@@ -17,12 +17,12 @@ void menu_dificuldade();
 void menu_operacao();
 int opcao();
 int selecionar_dificuldade();
+void encerramento();
 
 int main (){
     int opcao_inicial;
     int opcao_dificuldade;
     int opcao_operacao;
-    int i;
 
     do{
         system ("cls");
@@ -34,17 +34,11 @@ int main (){
             case 2: 
                 opcao_dificuldade = selecionar_dificuldade();
                 printf("Opcao Dificuldade: %i", opcao_dificuldade);
-
+                break;
             case 3:
             case 4: 
-                printf("Encerrando jogo");
-                for (i=0; i<3; i++){
-                    printf(".");
-                    Sleep(600);
-                }
-                printf("\n");
-                printf("Jogo encerrado.\n");
-            break;
+                encerramento();
+                break;
             default:
                 printf("Opcao nao encontrada.\n");
                 printf("Informe novamente.\n");
@@ -132,4 +126,15 @@ int selecionar_dificuldade(){
     } while (confirmacao != 1);
 
     return opcao;
+}
+
+void encerramento(){
+    int i;
+    printf("Encerrando jogo");
+    for (i=0; i<3; i++){
+        printf(".");
+        Sleep(600);
+    }
+    printf("\n");
+    printf("Jogo encerrado.\n");
 }
