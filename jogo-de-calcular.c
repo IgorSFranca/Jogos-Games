@@ -23,8 +23,8 @@ void mostrar_configuracoes(int, int);
 
 int main (){
     int opcao_inicial;
-    int opcao_dificuldade;
-    int opcao_operacao;
+    int opcao_dificuldade = 0;
+    int opcao_operacao = 0;
 
     do{
         system ("cls");
@@ -40,7 +40,7 @@ int main (){
                 opcao_operacao = selecionar_operacao();
                 break;
             case 4:
-                mostrar_configuracoes();
+                mostrar_configuracoes(opcao_dificuldade, opcao_operacao);
                 system ("pause");
                 break;
             case 5: 
@@ -191,5 +191,30 @@ int selecionar_operacao(){
 }
 
 void mostrar_configuracoes(int opcao_dificuldade, int opcao_operacao){
+    system ("cls");
+    cabecalho();
+    printf("      CONFIGURACOES ARMAZENADAS    \n");
 
+    printf(" DIFICULDADE: ");
+    if (opcao_dificuldade == 0)
+        printf(" NAO SELECIONADA\n");
+    else if (opcao_dificuldade == 1)
+        printf("FACIL\n");
+    else if (opcao_dificuldade == 2)
+        printf("MEDIO\n");
+    else if (opcao_dificuldade == 3)
+        printf("DIFICIL\n");
+
+    printf(" OPERACAO: ");
+    if (opcao_operacao == 0)
+        printf(" NAO SELECIONADA\n");
+    else if (opcao_operacao == 1)
+        printf("ADICAO\n");
+    else if (opcao_operacao == 2)
+        printf("SUBTRACAO\n");
+    else if (opcao_operacao == 3)
+        printf("MULTIPLICACAO\n");
+    else if (opcao_operacao == 4)
+        printf("DIVISAO\n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
