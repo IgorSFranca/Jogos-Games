@@ -17,7 +17,9 @@ void menu_dificuldade();
 void menu_operacao();
 int opcao();
 int selecionar_dificuldade();
+int selecionar_operacao();
 void encerramento();
+void mostrar_configuracoes(int, int);
 
 int main (){
     int opcao_inicial;
@@ -33,10 +35,15 @@ int main (){
             case 1:
             case 2: 
                 opcao_dificuldade = selecionar_dificuldade();
-                printf("Opcao Dificuldade: %i", opcao_dificuldade);
                 break;
             case 3:
-            case 4: 
+                opcao_operacao = selecionar_operacao();
+                break;
+            case 4:
+                mostrar_configuracoes();
+                system ("pause");
+                break;
+            case 5: 
                 encerramento();
                 break;
             default:
@@ -45,7 +52,7 @@ int main (){
                 system ("pause");
                 break;
         }
-    } while (opcao_inicial != 4);
+    } while (opcao_inicial != 5);
 
     return 0;
 }
@@ -63,7 +70,8 @@ void menu_inicial(){
     printf(" [1] INICIAR                       \n");
     printf(" [2] SELECIONAR DIFICULDADE        \n");
     printf(" [3] SELECIONAR OPERACAO MATEMATICA\n");
-    printf(" [4] ENCERRAR                      \n");
+    printf(" [4] MOSTRAR CONFIGURACOES         \n");
+    printf(" [5] ENCERRAR                      \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
@@ -117,12 +125,14 @@ int selecionar_dificuldade(){
                 printf("SAIR\n");
                 break;
             default:
-                printf("Opcao invalida");
+                printf("Opcao invalida\n");
+                system ("pause");
                 break;
         }
-
-        printf("Deseja confirmar a opcao? [1 SIM][0 NAO]");
-        scanf("%i", &confirmacao);
+        if (opcao >=1 && opcao <= 4){
+            printf("Deseja confirmar a opcao? [1 SIM][0 NAO] ");
+            scanf("%i", &confirmacao);
+        }
     } while (confirmacao != 1);
 
     return opcao;
@@ -137,4 +147,49 @@ void encerramento(){
     }
     printf("\n");
     printf("Jogo encerrado.\n");
+}
+
+int selecionar_operacao(){
+    int opcao;
+    int confirmacao = 0;
+    do{
+        system ("cls");
+        cabecalho();
+        menu_operacao();
+
+        printf("Informe a operacao que deseja treinar: ");
+        scanf("%i", &opcao);
+        switch (opcao){
+            case 1:
+                printf("Operacao escolhida: ADICAO\n");
+                break;
+            case 2: 
+                printf("Operacao escolhida: SUBTRACAO\n");
+                break;
+            case 3: 
+                printf("Operacao escolhida: MULTIPLICACAO\n");
+                break;
+            case 4:
+                printf("Operacao escolhida: DIVISAO\n");
+                break;
+            case 5:
+                printf("VOLTAR\n");
+                break;
+            default:
+                printf("Opcao invalida\n");
+                system("pause");
+                break;
+        }
+
+        if (opcao >=1 && opcao <= 5){
+            printf("Deseja confirmar a opcao? [1 SIM][0 NAO] ");
+            scanf("%i", &confirmacao);
+        }
+    } while (confirmacao != 1);
+
+    return opcao;
+}
+
+void mostrar_configuracoes(int opcao_dificuldade, int opcao_operacao){
+
 }
