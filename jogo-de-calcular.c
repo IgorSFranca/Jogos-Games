@@ -109,15 +109,23 @@ int selecionar_dificuldade(){
 
         printf("Informe a dificuldade que deseja: ");
         scanf("%i", &opcao);
-        printf("Dificuldade escolhida: ");
-        if (opcao == 1)
-            printf("FACIL\n");
-        else if (opcao == 2)
-            printf("MEDIO\n");
-        else if (opcao == 3)
-            printf("DIFICIL\n");
-        else if (opcao == 4)
-            printf("Retornar para o menu anterior.\n");
+        switch (opcao){
+            case 1:
+                printf("Dificuldade escolhida: FACIL\n");
+                break;
+            case 2: 
+                printf("Dificuldade escolhida: MEDIO\n");
+                break;
+            case 3: 
+                printf("Dificuldade escolhida: DIFICIL\n");
+                break;
+            case 4:
+                printf("SAIR\n");
+                break;
+            default:
+                printf("Opcao invalida");
+                break;
+        }
 
         printf("Deseja confirmar a opcao? [1 SIM][0 NAO]");
         scanf("%i", &confirmacao);
