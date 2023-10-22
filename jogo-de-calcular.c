@@ -20,18 +20,20 @@ void menu_dificuldade();
 void menu_operacao();
 void encerramento();
 void mostrar_configuracoes(int, int, int);
-void jogo(int, int, int);
+void resultado_final(int);
+int jogo(int, int, int);
 int opcao();
 int selecionar_dificuldade();
 int selecionar_operacao();
 int quantidade_rodadas();
-int numero_aleatorio();
+int numero_aleatorio(int);
 
 int main (){
     int opcao_inicial;
     int opcao_dificuldade = 0;
     int opcao_operacao = 0;
     int qtd_rodadas = 0;
+    int resultado;
 
     do{
         system ("cls");
@@ -40,7 +42,14 @@ int main (){
         opcao_inicial = opcao();
         switch (opcao_inicial){
             case 1:
-                jogo(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                resultado = jogo(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                if (resultado == -1){
+                    printf("Existem configuracoes faltantes!\n");
+                    printf("Inclua ou encerre o jogo\n");
+                    system("pause");
+                }
+                else
+                    resultado_final(resultado);
                 break;
             case 2: 
                 opcao_dificuldade = selecionar_dificuldade();
@@ -256,21 +265,40 @@ int quantidade_rodadas(){
     return rodadas;
 }
 
-void jogo(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
+int jogo(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
     system("cls");
     cabecalho();
+    if (opcao_dificuldade == 0 || opcao_operacao == 0 || qtd_rodadas == 0)
+        return -1;
+    
 
 }
 
-int numero_aleatorio(){
+int numero_aleatorio(int opcao_dificuldade){
     //intervalo
-    int min = 1;
-    int max = 100;
+    int min;
+    int max;
     int numero_aleatorio;
+
+    if (opcao_dificuldade == 1){
+        min = 1;
+        max = 10;
+    }
+    else if (opcao_dificuldade == 2){
+        min = 1;
+        max = 50;
+    }
+    else if (opcao_dificuldade == 3){
+        min = 1;
+        max = 1000;
+    }
 
     srand(time(NULL)); //inicialização da semente
 
     numero_aleatorio = rand()%(max-min + 1) + min; //Geração do númrero no intervalo
 
     return numero_aleatorio;
+}
+
+void resultado_final(int resultado){
 }
