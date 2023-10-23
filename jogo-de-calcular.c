@@ -278,7 +278,7 @@ int jogo_adicao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
     if (opcao_dificuldade == 0 || opcao_operacao == 0 || qtd_rodadas == 0)
         return -1;
 
-    for (i=1; i<qtd_rodadas; i++){
+    for (i=0; i<qtd_rodadas-1; i++){
         if (i==0){
             printf("Quanto eh %i ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
             soma+= numero_aleatorio;
@@ -294,7 +294,7 @@ int jogo_adicao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
             return -2;
         printf("Agora, o resultado + %i. Quanto fica? ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
         scanf("%i", &resposta);
-        if (i==qtd_rodadas)
+        if (i==qtd_rodadas-2)
             return 0;
     }
 }
@@ -322,30 +322,36 @@ int fnumero_aleatorio(int opcao_dificuldade){
     return numero_aleatorio;
 }
 
-void resultado_final(int resultado, int opcao_resultado){
+void resultado_final(int resultado, int opcao_dificuldade){
     if (resultado == 0){
         system ("cls");
         cabecalho();
-        if (opcao_resultado == 1){
-            printf("PARABENS! VOCE VENCEU!");
-            printf("Mas tambem, estava mamao com acucar neh!\n");
+        if (opcao_dificuldade == 1){
+            printf("\n");
+            printf("PARABENS! VOCE VENCEU!\n");
+            printf("Mas tambem, tava mamao com acucar neh!\n");
             printf("Voce CONSEGUE mais do que isso!\n");
+            system("pause");
         }
-        else if (opcao_resultado == 2){
-            printf("PARABENS! VOCE VENCEU!");
+        else if (opcao_dificuldade == 2){
+            printf("\n");
+            printf("PARABENS! VOCE VENCEU!\n");
             printf("Eh, este estava um pouquinho mais dificil.\n");
             printf("Agora, se desafie de verdade!\n");
+            system ("pause");
         }
-        else if (opcao_resultado == 3){
+        else if (opcao_dificuldade == 3){
+            printf("\n");
             printf("PARABENS! CALCULADORA HUMANA!\n");
             printf("VOCE EH O BICHAO MESMO!\n");
             printf("Ja pode postar o print no status do Instagram.\n");
+            system ("pause");
         }
     }
     if (resultado == -1){
             printf("Existem configuracoes faltantes!\n");
             printf("Inclua ou encerre o jogo\n");
-            system("pause");
+            system ("pause");
     }
     if (resultado == -2){
         system ("cls");
