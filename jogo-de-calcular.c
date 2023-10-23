@@ -20,15 +20,21 @@ void menu_dificuldade();
 void menu_operacao();
 void encerramento();
 void mostrar_configuracoes(int, int, int);
-void resultado_final(int);
-int jogo(int, int, int);
+void resultado_final(int, int);
+int jogo_geral(int, int, int);
+int jogo_adicao(int, int, int);
+int jogo_subtracao();
+int jogo_multiplicacao();
+int jogo_divisao();
 int opcao();
 int selecionar_dificuldade();
 int selecionar_operacao();
 int quantidade_rodadas();
-int numero_aleatorio(int);
+int fnumero_aleatorio(int);
 
 int main (){
+    srand(time(NULL)); //inicialização da semente
+    
     int opcao_inicial;
     int opcao_dificuldade = 0;
     int opcao_operacao = 0;
@@ -42,14 +48,8 @@ int main (){
         opcao_inicial = opcao();
         switch (opcao_inicial){
             case 1:
-                resultado = jogo(opcao_dificuldade, opcao_operacao, qtd_rodadas);
-                if (resultado == -1){
-                    printf("Existem configuracoes faltantes!\n");
-                    printf("Inclua ou encerre o jogo\n");
-                    system("pause");
-                }
-                else
-                    resultado_final(resultado);
+                resultado = jogo_adicao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                resultado_final(resultado, opcao_dificuldade);
                 break;
             case 2: 
                 opcao_dificuldade = selecionar_dificuldade();
@@ -265,40 +265,91 @@ int quantidade_rodadas(){
     return rodadas;
 }
 
-int jogo(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
+int jogo_adicao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
+    int i;
+    int resposta;
+    int numero_aleatorio;
+    int soma = 0;
+
     system("cls");
     cabecalho();
+
+    //validação se todas as configurações estão informadas
     if (opcao_dificuldade == 0 || opcao_operacao == 0 || qtd_rodadas == 0)
         return -1;
-    
 
+    for (i=1; i<qtd_rodadas; i++){
+        if (i==0){
+            printf("Quanto eh %i ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
+            soma+= numero_aleatorio;
+            printf("+ %i? ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
+            soma+= numero_aleatorio;
+            scanf("%i", &resposta);
+        }
+        if (i>=1)
+            soma+=numero_aleatorio;
+        if (resposta == soma)
+            printf("Parabens!\n");
+        else if (resposta != soma)
+            return -2;
+        printf("Agora, o resultado + %i. Quanto fica? ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
+        scanf("%i", &resposta);
+        if (i==qtd_rodadas)
+            return 0;
+    }
 }
 
-int numero_aleatorio(int opcao_dificuldade){
+int fnumero_aleatorio(int opcao_dificuldade){
     //intervalo
-    int min;
+    int min = 1;
     int max;
     int numero_aleatorio;
 
     if (opcao_dificuldade == 1){
-        min = 1;
         max = 10;
     }
     else if (opcao_dificuldade == 2){
-        min = 1;
         max = 50;
     }
     else if (opcao_dificuldade == 3){
-        min = 1;
         max = 1000;
     }
 
-    srand(time(NULL)); //inicialização da semente
+    Sleep(1); //gerando um atraso na geração no número
 
     numero_aleatorio = rand()%(max-min + 1) + min; //Geração do númrero no intervalo
 
     return numero_aleatorio;
 }
 
-void resultado_final(int resultado){
+void resultado_final(int resultado, int opcao_resultado){
+    if (resultado == 0){
+        system ("cls");
+        cabecalho();
+        if (opcao_resultado == 1){
+            printf("PARABENS! VOCE VENCEU!");
+            printf("Mas tambem, estava mamao com acucar neh!\n");
+            printf("Voce CONSEGUE mais do que isso!\n");
+        }
+        else if (opcao_resultado == 2){
+            printf("PARABENS! VOCE VENCEU!");
+            printf("Eh, este estava um pouquinho mais dificil.\n");
+            printf("Agora, se desafie de verdade!\n");
+        }
+        else if (opcao_resultado == 3){
+            printf("PARABENS! CALCULADORA HUMANA!\n");
+            printf("VOCE EH O BICHAO MESMO!\n");
+            printf("Ja pode postar o print no status do Instagram.\n");
+        }
+    }
+    if (resultado == -1){
+            printf("Existem configuracoes faltantes!\n");
+            printf("Inclua ou encerre o jogo\n");
+            system("pause");
+    }
+    if (resultado == -2){
+        system ("cls");
+        cabecalho();
+        printf("Nao foi dessa vez, nao desista, tente de novo!\n");
+    }
 }
