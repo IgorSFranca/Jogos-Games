@@ -6,22 +6,22 @@ Fique a vontade para contribuir com a correção de algum código, sugerindo alg
 Planejamento de criação: <br>
 obs.: A criação não será necessáriamente nesta ordem (Rsrs)
 
-01. [x] Jogo da Forca 
-02. [x] Jo-Ken-Pô
-03. [ ] Par ou Ímpar
-04. [ ] Campo Minado
-05. [ ] Jogo da memória
-06. [ ] Batalha Naval
-07. [ ] Truco
-08. [ ] Banco Imobiliário
-09. [ ] Dama
-10. [ ] Xadrez
-11. [ ] Jogo da velha
-12. [ ] Sudoku
-13. [ ] 2048
-14. [ ] Quebra-Cabeças deslizante
-15. [ ] Jogo da cobrinha
-16. [ ] Jogo de Pong
-17. [ ] Pac-Man
-18. [x] Jogo da Velha (HASH)
-19. [x] Jogo de calcular
+1. [x] Jogo da Forca
+2. [x] Jo-Ken-Pô
+3. [x] Jogo da Velha (HASH)
+4. [x] Jogo de calcular
+5. [ ] Par ou Ímpar
+6. [ ] Campo Minado
+7. [ ] Jogo da memória
+8. [ ] Batalha Naval
+9. [ ] Truco
+10. [ ] Banco Imobiliário
+11. [ ] Dama
+12. [ ] Xadrez
+13. [ ] Jogo da velha
+14. [ ] Sudoku
+15. [ ] 2048
+16. [ ] Quebra-Cabeças deslizante
+17. [ ] Jogo da cobrinha
+18. [ ] Jogo de Pong
+19. [ ] Pac-Man
