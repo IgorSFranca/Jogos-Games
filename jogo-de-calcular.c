@@ -79,41 +79,41 @@ int main (){
 }
 
 void cabecalho(){
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("               ~ # ~               \n");
-    printf("    ~ #  JOGO DE CALCULAR # ~      \n");
-    printf("               ~ # ~               \n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("                  ~ # ~                \n");
+    printf("       ~ #  JOGO DE CALCULAR # ~       \n");
+    printf("                  ~ # ~                \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 void menu_inicial(){
-    printf("              MENU PRINCIPAL         \n");
-    printf(" [1] INICIAR                         \n");
-    printf(" [2] SELECIONAR DIFICULDADE          \n");
-    printf(" [3] SELECIONAR OPERACAO MATEMATICA  \n");
-    printf(" [4] SELECIONAR QUANTIDADE DE RODADAS\n");
-    printf(" [5] MOSTRAR CONFIGURACOES           \n");
-    printf(" [6] ENCERRAR                        \n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("              MENU PRINCIPAL           \n");
+    printf(" [1] INICIAR                           \n");
+    printf(" [2] SELECIONAR DIFICULDADE            \n");
+    printf(" [3] SELECIONAR OPERACAO MATEMATICA    \n");
+    printf(" [4] SELECIONAR QUANTIDADE DE RODADAS  \n");
+    printf(" [5] MOSTRAR CONFIGURACOES             \n");
+    printf(" [6] ENCERRAR                          \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 void menu_dificuldade(){
-    printf("               DIFICULDADE           \n");
-    printf(" [1] FACIL                           \n");
-    printf(" [2] MEDIO                           \n");
-    printf(" [3] DIFICIL                         \n");
-    printf(" [4] VOLTAR                          \n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("               DIFICULDADE             \n");
+    printf(" [1] FACIL                             \n");
+    printf(" [2] MEDIO                             \n");
+    printf(" [3] DIFICIL                           \n");
+    printf(" [4] VOLTAR                            \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 void menu_operacao(){
-    printf("                OPERACAO             \n");
-    printf(" [1] ADICAO                          \n");
-    printf(" [2] SUBTRACAO                       \n");
-    printf(" [3] MULTIPLICACAO                   \n");
-    printf(" [4] DIVISAO                         \n");
-    printf(" [5] VOLTAR                          \n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("                OPERACAO               \n");
+    printf(" [1] ADICAO                            \n");
+    printf(" [2] SUBTRACAO                         \n");
+    printf(" [3] MULTIPLICACAO                     \n");
+    printf(" [4] DIVISAO                           \n");
+    printf(" [5] VOLTAR                            \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 int opcao(){
@@ -254,7 +254,7 @@ int quantidade_rodadas(){
     system ("cls");
     cabecalho();
     do{
-        printf("DESEJA QUANTAS RODADAS DE PERGUNTAS? \n");
+        printf("DESEJA QUANTAS RODADAS DE PERGUNTAS? ");
         scanf("%i", &rodadas);
         printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
@@ -357,5 +357,7 @@ void resultado_final(int resultado, int opcao_dificuldade){
         system ("cls");
         cabecalho();
         printf("Nao foi dessa vez, nao desista, tente de novo!\n");
+        system ("pause");
+
     }
 }
