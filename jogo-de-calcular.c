@@ -24,7 +24,7 @@ void resultado_final(int, int);
 int jogo_geral(int, int, int);
 int jogo_adicao(int, int, int);
 int jogo_subtracao(int, int, int);
-int jogo_multiplicacao();
+int jogo_multiplicacao(int, int, int);
 int jogo_divisao();
 int opcao();
 int selecionar_dificuldade();
@@ -48,10 +48,21 @@ int main (){
         opcao_inicial = opcao();
         switch (opcao_inicial){
             case 1:
-                if (opcao_operacao == 1)
-                resultado = jogo_subtracao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
-                resultado_final(resultado, opcao_dificuldade);
-                break;
+                if (opcao_operacao == 1){
+                    resultado = jogo_adicao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                    resultado_final(resultado, opcao_dificuldade);
+                    break;
+                }
+                else if (opcao_operacao == 2){
+                    resultado = jogo_subtracao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                    resultado_final(resultado, opcao_dificuldade);
+                    break;
+                }
+                else if (opcao_operacao == 3){
+                    resultado = jogo_multiplicacao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                    resultado_final(resultado, opcao_dificuldade);
+                    break;
+                }
             case 2: 
                 opcao_dificuldade = selecionar_dificuldade();
                 break;
@@ -391,6 +402,40 @@ int jogo_subtracao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
         else if (resposta != total)
             return -2;
         printf("Agora, o resultado - %i. Quanto fica? ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
+        scanf("%i", &resposta);
+        if (i==qtd_rodadas-2)
+            return 0;
+    }
+}
+
+int jogo_multiplicacao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
+    int i;
+    int resposta;
+    int numero_aleatorio;
+    int total = 0;
+
+    system("cls");
+    cabecalho();
+
+    //validação se todas as configurações estão informadas
+    if (opcao_dificuldade == 0 || opcao_operacao == 0 || qtd_rodadas == 0)
+        return -1;
+
+    for (i=0; i<qtd_rodadas-1; i++){
+        if (i==0){
+            printf("Quanto eh %i ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
+            total+= numero_aleatorio;
+            printf("* %i? ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
+            total*= numero_aleatorio;
+            scanf("%i", &resposta);
+        }
+        if (i>=1)
+            total*=numero_aleatorio;
+        if (resposta == total)
+            printf("Parabens!\n");
+        else if (resposta != total)
+            return -2;
+        printf("Agora, o resultado * %i. Quanto fica? ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
         scanf("%i", &resposta);
         if (i==qtd_rodadas-2)
             return 0;
