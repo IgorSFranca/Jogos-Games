@@ -24,3 +24,4 @@ obs.: A criação não será necessáriamente nesta ordem (Rsrs)
 16. [ ] Jogo de Pong
 17. [ ] Pac-Man
 18. [x] Jogo da Velha (HASH)
+19. [x] Jogo de calcular
