@@ -25,7 +25,6 @@ int jogo_geral(int, int, int);
 int jogo_adicao(int, int, int);
 int jogo_subtracao(int, int, int);
 int jogo_multiplicacao(int, int, int);
-int jogo_divisao();
 int opcao();
 int selecionar_dificuldade();
 int selecionar_operacao();
@@ -123,8 +122,7 @@ void menu_operacao(){
     printf(" [1] ADICAO                            \n");
     printf(" [2] SUBTRACAO                         \n");
     printf(" [3] MULTIPLICACAO                     \n");
-    printf(" [4] DIVISAO                           \n");
-    printf(" [5] VOLTAR                            \n");
+    printf(" [4] VOLTAR                            \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
@@ -204,9 +202,6 @@ int selecionar_operacao(){
                 printf("Operacao escolhida: MULTIPLICACAO\n");
                 break;
             case 4:
-                printf("Operacao escolhida: DIVISAO\n");
-                break;
-            case 5:
                 printf("VOLTAR\n");
                 break;
             default:
@@ -215,7 +210,7 @@ int selecionar_operacao(){
                 break;
         }
 
-        if (opcao >=1 && opcao <= 5){
+        if (opcao >=1 && opcao <= 4){
             printf("Deseja confirmar a opcao? [1 SIM][0 NAO] ");
             scanf("%i", &confirmacao);
         }
