@@ -25,6 +25,7 @@ int jogo_geral(int, int, int);
 int jogo_adicao(int, int, int);
 int jogo_subtracao(int, int, int);
 int jogo_multiplicacao(int, int, int);
+int jogo_divisao(int, int, int);
 int opcao();
 int selecionar_dificuldade();
 int selecionar_operacao();
@@ -60,6 +61,10 @@ int main (){
                 else if (opcao_operacao == 3){
                     resultado = jogo_multiplicacao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
                     resultado_final(resultado, opcao_dificuldade);
+                    break;
+                }
+                else if (opcao_operacao == 4){
+                    resultado = jogo_divisao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
                     break;
                 }
             case 2: 
@@ -122,7 +127,8 @@ void menu_operacao(){
     printf(" [1] ADICAO                            \n");
     printf(" [2] SUBTRACAO                         \n");
     printf(" [3] MULTIPLICACAO                     \n");
-    printf(" [4] VOLTAR                            \n");
+    printf(" [4] DIVISAO                           \n");
+    printf(" [5] VOLTAR                            \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
@@ -202,6 +208,9 @@ int selecionar_operacao(){
                 printf("Operacao escolhida: MULTIPLICACAO\n");
                 break;
             case 4:
+                printf("Operacao escolhida: DIVISAO\n");
+                break;
+            case 5:
                 printf("VOLTAR\n");
                 break;
             default:
@@ -431,6 +440,53 @@ int jogo_multiplicacao(int opcao_dificuldade, int opcao_operacao, int qtd_rodada
         else if (resposta != total)
             return -2;
         printf("Agora, o resultado * %i. Quanto fica? ", numero_aleatorio=fnumero_aleatorio(opcao_dificuldade));
+        scanf("%i", &resposta);
+        if (i==qtd_rodadas-2)
+            return 0;
+    }
+}
+
+int jogo_divisao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
+    int i;
+    int resposta;
+    int numero_aleatorio1;
+    int numero_aleatorio2;
+    int total = 0;
+
+    numero_aleatorio1 = fnumero_aleatorio(opcao_dificuldade);
+    numero_aleatorio2 = fnumero_aleatorio(opcao_dificuldade);
+
+    // verificação se o n1 é maior que n2, para que a divisão não dê fracionada.
+    while (numero_aleatorio1 > numero_aleatorio2){
+        numero_aleatorio1 = fnumero_aleatorio(opcao_dificuldade);
+    }
+
+    // verificação se a divisão é inteira, por que se não for, não vai ser possível acertar
+    while (numero_aleatorio2%numero_aleatorio1 != 0){
+        numero_aleatorio2 = fnumero_aleatorio(opcao_dificuldade);
+    }
+
+    system("cls");
+    cabecalho();
+
+    //validação se todas as configurações estão informadas
+    if (opcao_dificuldade == 0 || opcao_operacao == 0 || qtd_rodadas == 0)
+        return -1;
+
+    for (i=0; i<qtd_rodadas-1; i++){
+        if (i==0){
+            printf("Quanto eh %i ", numero_aleatorio2);
+            printf("/ %i? ", numero_aleatorio1);
+            scanf("%i", &resposta);
+            total = (numero_aleatorio2/numero_aleatorio1);
+        }
+        if (i>=1)
+            total/=numero_aleatorio2;
+        if (resposta == total)
+            printf("Parabens!\n");
+        else if (resposta != total)
+            return -2;
+        printf("Agora, o resultado / %i. Quanto fica? ", numero_aleatorio2=fnumero_aleatorio(opcao_dificuldade));
         scanf("%i", &resposta);
         if (i==qtd_rodadas-2)
             return 0;
