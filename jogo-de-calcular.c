@@ -25,7 +25,7 @@ int jogo_geral(int, int, int);
 int jogo_adicao(int, int, int);
 int jogo_subtracao(int, int, int);
 int jogo_multiplicacao(int, int, int);
-int jogo_divisao(int, int, int);
+//int jogo_divisao(int, int, int);
 int opcao();
 int selecionar_dificuldade();
 int selecionar_operacao();
@@ -63,10 +63,11 @@ int main (){
                     resultado_final(resultado, opcao_dificuldade);
                     break;
                 }
-                else if (opcao_operacao == 4){
+                /*else if (opcao_operacao == 4){
                     resultado = jogo_divisao(opcao_dificuldade, opcao_operacao, qtd_rodadas);
+                    resultado_final(resultado, opcao_dificuldade);
                     break;
-                }
+                }*/
             case 2: 
                 opcao_dificuldade = selecionar_dificuldade();
                 break;
@@ -127,7 +128,7 @@ void menu_operacao(){
     printf(" [1] ADICAO                            \n");
     printf(" [2] SUBTRACAO                         \n");
     printf(" [3] MULTIPLICACAO                     \n");
-    printf(" [4] DIVISAO                           \n");
+    printf(" [4] DIVISAO (INOPERANTE)              \n");
     printf(" [5] VOLTAR                            \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
@@ -209,6 +210,8 @@ int selecionar_operacao(){
                 break;
             case 4:
                 printf("Operacao escolhida: DIVISAO\n");
+                printf("Porem, esta INOPERANTE\n");
+                printf("Escolha outro!\n");
                 break;
             case 5:
                 printf("VOLTAR\n");
@@ -374,8 +377,12 @@ void resultado_final(int resultado, int opcao_dificuldade){
         cabecalho();
         printf("Nao foi dessa vez, nao desista, tente de novo!\n");
         system ("pause");
-
     }
+    /*if (resultado == -3){
+        printf("Nao existem mais numeros que com resto 0\n");
+        printf("Por este motivo, o jogo esta encerrado e voce ganhou essa colher de cha\n");
+        printf("Nao sei se te parabenizo ou se te chamo de sortudo.\n");
+    }*/
 }
 
 int jogo_subtracao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
@@ -446,7 +453,7 @@ int jogo_multiplicacao(int opcao_dificuldade, int opcao_operacao, int qtd_rodada
     }
 }
 
-int jogo_divisao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
+/*int jogo_divisao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
     int i;
     int resposta;
     int numero_aleatorio1;
@@ -482,13 +489,22 @@ int jogo_divisao(int opcao_dificuldade, int opcao_operacao, int qtd_rodadas){
         }
         if (i>=1)
             total/=numero_aleatorio2;
+        
         if (resposta == total)
             printf("Parabens!\n");
+        
         else if (resposta != total)
             return -2;
-        printf("Agora, o resultado / %i. Quanto fica? ", numero_aleatorio2=fnumero_aleatorio(opcao_dificuldade));
+        
+        // verificação se a divisão é inteira, por que se não for, não vai ser possível acertar
+        while (total%numero_aleatorio2 != 0){
+            numero_aleatorio2 = fnumero_aleatorio(opcao_dificuldade);
+            if (total < 1)
+                return -3;
+        }
+        printf("Agora, o resultado / %i. Quanto fica? ", numero_aleatorio2);
         scanf("%i", &resposta);
         if (i==qtd_rodadas-2)
             return 0;
     }
-}
+}*/
